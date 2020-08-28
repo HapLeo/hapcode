@@ -1,9 +1,9 @@
 package top.hapleow.hapcodeweb.service.impl;
 
-import com.hapleow.codegenerator.dao.TableFieldsMapper;
-import com.hapleow.codegenerator.service.ITableFieldsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import top.hapleow.hapcodeweb.dao.TableFieldsMapper;
+import top.hapleow.hapcodeweb.service.ITableFieldsService;
 
 import java.util.List;
 import java.util.Map;
