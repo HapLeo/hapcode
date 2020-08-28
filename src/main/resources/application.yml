@@ -1,0 +1,12 @@
+server:
+  port: 9000
+spring:
+  datasource:
+    url: jdbc:sqlserver://101.171.6.127:2433;DatabaseName=lzcs
+    username: lzmsuser_delit
+    password: Udfoiu*$jlasdf723@sldkx7234kdAQIdkx_delitok
+mybatis-plus:
+  mapper-locations: mapper/*.xml
+  type-aliases-package: com.hapleow.codegenerator.model.*
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
