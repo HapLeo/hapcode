@@ -30,7 +30,7 @@ public class OracleQuery extends AbstractDbQuery {
 
 
     @Override
-    public String tableFieldsSql() {
+    public String tableFieldsSql(String tableName) {
         return "SELECT A.COLUMN_NAME, CASE WHEN A.DATA_TYPE='NUMBER' THEN "
                 + "(CASE WHEN A.DATA_PRECISION IS NULL THEN A.DATA_TYPE "
                 + "WHEN NVL(A.DATA_SCALE, 0) > 0 THEN A.DATA_TYPE||'('||A.DATA_PRECISION||','||A.DATA_SCALE||')' "

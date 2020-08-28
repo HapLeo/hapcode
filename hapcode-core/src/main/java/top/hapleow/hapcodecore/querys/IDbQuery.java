@@ -19,7 +19,8 @@ public interface IDbQuery {
      * 指定表的字段
      *
      * @return
+     * @param tableName
      */
-    String tableFieldsSql();
+    String tableFieldsSql(String tableName);
 
 }

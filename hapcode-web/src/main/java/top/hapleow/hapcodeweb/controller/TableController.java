@@ -1,6 +1,6 @@
 package top.hapleow.hapcodeweb.controller;
 
-import top.hapleow.hapcodeweb.service.ITableFieldsService;
+import top.hapleow.hapcodeweb.service.ITableFieldService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class TableController {
 
     @Autowired
-    private ITableFieldsService tableFieldsService;
+    private ITableFieldService tableFieldsService;
 
 
     @RequestMapping("/fields")

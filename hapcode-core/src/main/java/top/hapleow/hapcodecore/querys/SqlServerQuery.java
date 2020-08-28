@@ -15,7 +15,7 @@ public class SqlServerQuery extends AbstractDbQuery {
     }
 
     @Override
-    public String tableFieldsSql() {
+    public String tableFieldsSql(String tableName) {
         return "SELECT  cast(a.name AS VARCHAR(500)) AS TABLE_NAME,cast(b.name AS VARCHAR(500)) AS COLUMN_NAME, "
                 + "cast(c.VALUE AS NVARCHAR(500)) AS COMMENTS,cast(sys.types.name AS VARCHAR (500)) AS DATA_TYPE,"
                 + "(" + " SELECT CASE count(1) WHEN 1 then 'PRI' ELSE '' END"
@@ -30,6 +30,6 @@ public class SqlServerQuery extends AbstractDbQuery {
                 + " INNER JOIN sys.columns b ON b.object_id = a.object_id "
                 + " LEFT JOIN sys.types ON b.user_type_id = sys.types.user_type_id   "
                 + " LEFT JOIN sys.extended_properties c ON c.major_id = b.object_id AND c.minor_id = b.column_id "
-                + " WHERE a.name = ? and sys.types.name !='sysname' ";
+                + " WHERE a.name = '" + tableName + "' and sys.types.name !='sysname' ";
     }
 }
