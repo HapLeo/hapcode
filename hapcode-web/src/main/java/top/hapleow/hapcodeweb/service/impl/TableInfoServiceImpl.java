@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import top.hapleow.hapcodecore.common.DbQueryFactory;
 import top.hapleow.hapcodecore.model.TableField;
 import top.hapleow.hapcodecore.model.TableInfo;
-import top.hapleow.hapcodecore.querys.SqlServerQuery;
 import top.hapleow.hapcodeweb.dao.TableInfoMapper;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
