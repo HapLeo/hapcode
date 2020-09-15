@@ -2,8 +2,6 @@ package top.hapleow.hapcodecore.model;
 
 import lombok.Data;
 
-import java.util.List;
-
 /**
  * 基础模板模型
  * 用于向模板传输数据
@@ -18,8 +16,6 @@ public class BasicTemplateContext {
 
     private String bizEnBigName;
 
-    private TableInfo table;
-
-    private List<TableField> tableFieldList;
+    private TableModel table;
 
 }
