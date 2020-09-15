@@ -3,9 +3,11 @@ package top.hapleow.hapcodeweb.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import top.hapleow.hapcodecore.common.DbQueryFactory;
-import top.hapleow.hapcodecore.model.TableField;
-import top.hapleow.hapcodecore.model.TableInfo;
+import top.hapleow.hapcodecore.factory.DbQueryFactory;
+import top.hapleow.hapcodecore.factory.ModelFactory;
+import top.hapleow.hapcodecore.generator.BeetlGenerator;
+import top.hapleow.hapcodecore.model.FieldModel;
+import top.hapleow.hapcodecore.model.TableModel;
 import top.hapleow.hapcodeweb.dao.TableInfoMapper;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
@@ -24,21 +26,25 @@ public class TableInfoServiceImpl implements ITableInfoService {
     @Autowired
     private DbQueryFactory dbQueryFactory;
 
+    @Autowired
+    private BeetlGenerator beetlGenerator;
+
     @Value("${spring.datasource.url}")
     private String url;
 
     @Override
-    public List<TableField> getTableFields(String tableName) {
+    public List<FieldModel> getTableFields(String tableName) {
 
 
         String sql = dbQueryFactory.getDbQuery(url).tableFieldsSql(tableName);
-        return tableInfoMapper.getTableFields(sql);
+
+        return ModelFactory.tableFieldToModel(tableInfoMapper.getTableFields(sql));
     }
 
     @Override
-    public List<TableInfo> getTables() {
+    public List<TableModel> getTables() {
 
         String sql = dbQueryFactory.getDbQuery(url).tablesSql();
-        return tableInfoMapper.getTables(sql);
+        return ModelFactory.tableInfoToModel(tableInfoMapper.getTables(sql));
     }
 }

@@ -1,6 +1,7 @@
 package top.hapleow.hapcodecore.model;
 
 import lombok.Data;
+import top.hapleow.hapcodecore.common.TypeConverter;
 
 /**
  * 表字段（数据库模型）
@@ -9,7 +10,7 @@ import lombok.Data;
  * @date 2020/8/28
  */
 @Data
-public class TableField {
+public class TableField implements IDbModel {
 
     /**
      * 表名
@@ -42,4 +43,21 @@ public class TableField {
     private String COMMENTS;
 
 
+    /**
+     * 转换成Java中的Model
+     *
+     * @return
+     */
+    @Override
+    public FieldModel convert2JavaModel() {
+
+        FieldModel fieldModel = new FieldModel();
+        fieldModel.setName(this.COLUMN_NAME);
+        fieldModel.setIdentity(isIdentity);
+        fieldModel.setKey(this.KEY);
+        fieldModel.setJavaType(TypeConverter.db2Java(this.DATA_TYPE));
+        fieldModel.setComments(this.COMMENTS);
+
+        return fieldModel;
+    }
 }

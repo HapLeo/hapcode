@@ -1,0 +1,43 @@
+package ${model.packageName};
+
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.extension.activerecord.Model;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+/**
+ * ${context.bizChName}
+ *
+ * @author wuyulin
+ * @Date ${tool.currentTime()}
+ */
+@Data
+@EqualsAndHashCode(callSuper = false)
+@TableName("${table.name}")
+public class ${context.bizEnBigName} extends Model<${context.bizEnBigName}>{
+
+<% for(item in table.fields!){ %>
+
+    <% if(item.keyFlag){ %>
+    public static final String PRIMARY_KEY_COLUMN = "${item.name}";
+
+    /**
+     * ${item.comment!}
+     */
+    @TableId("${item.name}")
+    private ${item.columnType.type} ${item.propertyName};
+    <% }else{ %>
+
+    /**
+     * ${item.comment!}
+     */
+    @TableField("${item.name}")
+    private ${item.columnType.type} ${item.propertyName};
+    <%}%>
+<% } %>
+
+
+
+}

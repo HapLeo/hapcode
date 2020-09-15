@@ -1,10 +1,9 @@
 package top.hapleow.hapcodeweb.service;
 
-import top.hapleow.hapcodecore.model.TableField;
-import top.hapleow.hapcodecore.model.TableInfo;
+import top.hapleow.hapcodecore.model.FieldModel;
+import top.hapleow.hapcodecore.model.TableModel;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author wuyulin
@@ -12,8 +11,8 @@ import java.util.Map;
  */
 public interface ITableInfoService {
 
-    List<TableField> getTableFields(String tableName);
+    List<FieldModel> getTableFields(String tableName);
 
-    List<TableInfo> getTables();
+    List<TableModel> getTables();
 
 }

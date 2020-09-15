@@ -1,4 +1,4 @@
-package top.hapleow.hapcodecore.common;
+package top.hapleow.hapcodecore.factory;
 
 import top.hapleow.hapcodecore.querys.IDbQuery;
 

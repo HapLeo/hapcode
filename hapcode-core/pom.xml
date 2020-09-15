@@ -11,5 +11,12 @@
 
     <artifactId>hapcode-core</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ibeetl</groupId>
+            <artifactId>beetl</artifactId>
+            <version>3.1.7.RELEASE</version>
+        </dependency>
+    </dependencies>
 
 </project>

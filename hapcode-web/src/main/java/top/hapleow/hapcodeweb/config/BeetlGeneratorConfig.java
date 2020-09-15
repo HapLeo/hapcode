@@ -2,20 +2,19 @@ package top.hapleow.hapcodeweb.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import top.hapleow.hapcodecore.factory.DbQueryFactory;
+import top.hapleow.hapcodecore.generator.BeetlGenerator;
 
 /**
- * 数据库查询工厂配置类
+ * Beetl生成器配置
  *
  * @author wuyulin
  * @date 2020/9/15
  */
 @Component
-public class DbQueryFactoryConfig {
+public class BeetlGeneratorConfig {
 
     @Bean
-    public DbQueryFactory getDbQueryFactory() {
-
-        return new DbQueryFactory();
+    public BeetlGenerator getBeetlGenerator() {
+        return new BeetlGenerator();
     }
 }
