@@ -26,4 +26,12 @@ public class HapCodeController {
         hapCodeService.coding(tableName,templateKey);
         return "SUCCESS";
     }
+
+    @RequestMapping("/codingAll")
+    @ResponseBody
+    public String codingAll(@RequestParam("tableName") String tableName) {
+
+        hapCodeService.codingAll(tableName);
+        return "SUCCESS";
+    }
 }

@@ -11,4 +11,5 @@ public interface IHapCodeService {
 
     void coding(String tableName, String templateKey);
 
+    void codingAll(String tableName);
 }

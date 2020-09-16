@@ -18,10 +18,10 @@ import java.util.Map;
  */
 public class TemplateContextFactory {
 
-    private static final Map<String, Class<? extends BasicTemplateContext>> templateMap = new HashMap<>();
+    public static final Map<String, Class<? extends BasicTemplateContext>> templateMap = new HashMap<>();
 
 
-    private static void autoRegistTemplate() {
+    public static void autoRegistTemplate() {
         try {
             URL systemResource = ClassLoader.getSystemResource("template/");
 
