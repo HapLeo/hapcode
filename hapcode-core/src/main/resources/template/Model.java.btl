@@ -10,7 +10,7 @@ import lombok.EqualsAndHashCode;
 /**
  * ${context.bizChName}
  *
- * @author wuyulin
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
 @Data

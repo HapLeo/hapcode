@@ -2,6 +2,7 @@ package top.hapleow.hapcodecore.model;
 
 import lombok.Data;
 import top.hapleow.hapcodecore.common.StringUtil;
+import top.hapleow.hapcodecore.config.ApplicationConfig;
 
 /**
  * 基础模板模型
@@ -12,6 +13,8 @@ import top.hapleow.hapcodecore.common.StringUtil;
  */
 @Data
 public class BasicTemplateContext {
+
+    private String author;
 
     private String bizChName;
 
@@ -25,15 +28,17 @@ public class BasicTemplateContext {
 
 
 
-    public BasicTemplateContext(TableModel table, String tablePrefix) {
-        if (table == null) {
+    public BasicTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+        if (table == null || applicationConfig == null) {
             throw new NullPointerException();
         }
+
         this.table = table;
         this.tablePrefix = tablePrefix;
         this.bizChName = table.getComments();
         this.bizEnName = StringUtil.underline2CamelCase(table.getName(), tablePrefix);
         this.bizEnBigName = StringUtil.firstCharUp(this.bizEnName);
+        this.author = applicationConfig.author;
     }
 
 }

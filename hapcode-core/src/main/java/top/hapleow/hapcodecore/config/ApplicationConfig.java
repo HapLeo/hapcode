@@ -9,6 +9,7 @@ import lombok.Data;
 @Data
 public class ApplicationConfig {
 
+    public String author = "wuyulin";
     private PackageConfig packageConfig = new PackageConfig();
 
 }
