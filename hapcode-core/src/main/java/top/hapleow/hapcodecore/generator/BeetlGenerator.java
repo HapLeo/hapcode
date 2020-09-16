@@ -5,8 +5,10 @@ import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.beetl.core.resource.ClasspathResourceLoader;
 import top.hapleow.hapcodecore.common.Const;
+import top.hapleow.hapcodecore.common.FileUtil;
 import top.hapleow.hapcodecore.common.Tool;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
+import top.hapleow.hapcodecore.model.BasicTemplateContext;
 import top.hapleow.hapcodecore.model.ModelTemplateContext;
 import top.hapleow.hapcodecore.model.TableModel;
 
@@ -21,9 +23,16 @@ import java.io.IOException;
 public class BeetlGenerator implements IGenerator {
 
 
+    /**
+     * 执行生成过程
+     *
+     * @param templateName
+     * @param tableModel
+     * @param applicationConfig
+     */
     public void execute(String templateName, TableModel tableModel, ApplicationConfig applicationConfig) {
 
-        ModelTemplateContext templateContext = new ModelTemplateContext(tableModel, "lzc_", applicationConfig.getPackageConfig().getPackageName());
+        BasicTemplateContext templateContext = new ModelTemplateContext(tableModel, "lzc_", applicationConfig);
 
         //初始化代码
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
@@ -43,8 +52,10 @@ public class BeetlGenerator implements IGenerator {
         gt.registerFunction("tool.currentTime", (objects, context) -> Tool.currentTime());
 
         //渲染结果
-        String str = t.render();
-        System.out.println(str);
-    }
+        String content = t.render();
+        String fileName = templateContext.getFileName();
+        String filePath = templateContext.getFilePath();
 
+        FileUtil.createFile(content, fileName, filePath);
+    }
 }

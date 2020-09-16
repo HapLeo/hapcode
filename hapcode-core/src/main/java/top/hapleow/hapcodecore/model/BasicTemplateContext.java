@@ -3,6 +3,7 @@ package top.hapleow.hapcodecore.model;
 import lombok.Data;
 import top.hapleow.hapcodecore.common.StringUtil;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
+import top.hapleow.hapcodecore.config.PackageConfig;
 
 /**
  * 基础模板模型
@@ -26,6 +27,15 @@ public class BasicTemplateContext {
 
     private TableModel table;
 
+    /**
+     * 文件名
+     */
+    private String fileName;
+
+    /**
+     * 文件路径
+     */
+    private String filePath;
 
 
     public BasicTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
@@ -39,6 +49,8 @@ public class BasicTemplateContext {
         this.bizEnName = StringUtil.underline2CamelCase(table.getName(), tablePrefix);
         this.bizEnBigName = StringUtil.firstCharUp(this.bizEnName);
         this.author = applicationConfig.author;
+        PackageConfig packageConfig = applicationConfig.getPackageConfig();
+        this.filePath = packageConfig.getModulePath() + packageConfig.getJavaPath() + packageConfig.getPackagePath();
     }
 
 }

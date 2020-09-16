@@ -1,6 +1,7 @@
 package top.hapleow.hapcodecore.model;
 
 import lombok.Data;
+import top.hapleow.hapcodecore.config.ApplicationConfig;
 
 /**
  * 基础模板模型
@@ -17,10 +18,14 @@ public class ModelTemplateContext extends BasicTemplateContext {
      */
     private String packageName;
 
+    private String subPackageName = "model/";
 
-    public ModelTemplateContext(TableModel table, String tablePrefix, String packageName) {
-        super(table, tablePrefix);
-        this.packageName = packageName;
+
+    public ModelTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+        super(table, tablePrefix, applicationConfig);
+        this.packageName = applicationConfig.getPackageConfig().getPackageName() + "." + "model";
+        this.setFileName(super.getBizEnBigName() +"Model.java");
+        this.setFilePath(getFilePath() + subPackageName);
     }
 
 }
