@@ -1,0 +1,98 @@
+package ${controller.packageName};
+
+import com.baomidou.mybatisplus.core.metadata.OrderItem;
+<% for(import in controller.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}控制器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+@Controller
+@RequestMapping("/${context.bizEnName}")
+public class ${context.bizEnBigName}Controller extends BaseController {
+
+    private String PREFIX = "/${context.moduleName}/${context.bizEnName}/";
+
+    @Autowired
+    private I${context.entityName}Service ${context.bizEnName}Service;
+
+
+    /**
+     * 跳转到${context.bizChName}首页
+     */
+    @RequestMapping("")
+    public String index() {
+        return PREFIX + "${context.bizEnName}.html";
+    }
+
+    /**
+     * 跳转到添加${context.bizChName}
+     */
+    @RequestMapping("/toAdd")
+    public String toAdd() {
+        return PREFIX + "${context.bizEnName}_add.html";
+    }
+
+    /**
+     * 跳转到修改${context.bizChName}
+     */
+    @RequestMapping("/toEdit/{id}")
+    public String toEdit(@PathVariable("id") Integer id, Model model) {
+
+        model.addAttribute("item", ${context.bizEnName}Service.getById(id));
+        return PREFIX + "${context.bizEnName}_edit.html";
+    }
+
+    /**
+     * 新增${context.bizChName}
+     */
+    @RequestMapping(value = "/add")
+    @ResponseBody
+    public Object add(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.addItem(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 删除${context.bizChName}
+     */
+    @RequestMapping(value = "/delete")
+    @ResponseBody
+    public Object delete(@RequestParam Integer id) {
+        ${context.bizEnName}Service.delItem(id);
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 修改${context.bizChName}
+     */
+    @RequestMapping(value = "/edit")
+    @ResponseBody
+    public Object edit(${context.entityName} ${context.bizEnName}) {
+        ${context.bizEnName}Service.editItem(${context.bizEnName});
+        return SUCCESS_TIP;
+    }
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    @RequestMapping(value = "/list")
+    @ResponseBody
+    public Object list(${context.bizEnBigName}Dto dto) {
+
+        Page<${context.bizEnBigName}> page = PageFactory.defaultPage();
+        if (page.getOrders().size() == 0) {
+            page.setOrders(OrderItem.descs(${context.bizEnBigName}.PRIMARY_KEY_COLUMN));
+        }
+        List<Map<String, Object>> result = ${context.bizEnName}Service.selectListByPage(page, dto);
+        List<${context.bizEnBigName}> wrap = (List<${context.bizEnBigName}>) new ${context.bizEnBigName}Wrapper(result).wrap();
+        page.setRecords(wrap);
+
+        return super.packForAPP(page);
+    }
+
+}

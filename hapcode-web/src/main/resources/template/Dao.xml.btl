@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="${dao.namespace}">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="${dao.modelClassName}">
+    <% for(item in table.fields!){ %>
+        <% if(item.keyFlag){ %>
+        <id column="${item.name}" property="${item.propertyName}"/>
+        <% }else{ %>
+        <result column="${item.name}" property="${item.propertyName}"/>
+        <%}%>
+    <% } %>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+    <% for(item in table.fields!){ %>
+        <% if(item.keyFlag){ %>
+        ${item.name} AS ${item.propertyName}
+        <% flag = true; %>
+        <% }else{ %>
+        ,${item.name} AS ${item.propertyName}
+        <%}%>
+    <% } %>
+    </sql>
+
+    <select id="selectListByPage" resultType="java.util.Map">
+        select
+        <include refid="Base_Column_List"/>
+        from ${table.name!}
+    </select>
+
+</mapper>

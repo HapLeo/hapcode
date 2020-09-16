@@ -1,0 +1,30 @@
+package ${wrapper.packageName};
+
+<% for(import in wrapper.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}结果包装器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+
+public class ${context.bizEnBigName}Wrapper extends BaseControllerWrapper {
+
+    public ${context.bizEnBigName}Wrapper(Object result) {
+            super(result);
+        }
+
+    @Override
+    public void wrapTheMap(Map<String, Object> map) {
+
+            if (ToolUtil.isEmpty(map)){
+                return;
+            }
+
+    }
+
+
+}

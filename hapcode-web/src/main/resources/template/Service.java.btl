@@ -1,0 +1,35 @@
+package ${service.serviceInterfacePackageName};
+
+<% for(import in service.serviceInterfaceImports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}控制器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+public interface I${context.bizEnBigName}Service extends IService<${context.bizEnBigName}> {
+
+
+    /**
+     * 新增${context.bizChName}
+     */
+    void addItem(${context.entityName} ${context.bizEnName});
+
+    /**
+     * 删除${context.bizChName}
+     */
+    void delItem(Integer id);
+
+    /**
+     * 修改${context.bizChName}
+     */
+    void editItem(${context.entityName} ${context.bizEnName});
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    List<Map<String,Object>> selectListByPage(Page<${context.bizEnBigName}> page,${context.bizEnBigName}Dto dto);
+}

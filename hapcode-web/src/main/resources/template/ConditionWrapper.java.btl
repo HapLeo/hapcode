@@ -1,0 +1,17 @@
+package ${model.packageName};
+
+<% for(import in model.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}条件包装器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+public class ${context.bizEnBigName}ConditionWrapper {
+
+
+
+}

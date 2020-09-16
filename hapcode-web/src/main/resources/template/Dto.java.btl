@@ -1,0 +1,18 @@
+package ${dto.packageName};
+
+<% for(import in dto.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}数据传输器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+
+public class ${context.bizEnBigName}Dto {
+
+
+
+}

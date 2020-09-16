@@ -1,0 +1,54 @@
+package ${service.serviceImplPackageName};
+
+<% for(import in service.serviceImplImports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}控制器
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+ @Service
+public class ${context.bizEnBigName}ServiceImpl extends ServiceImpl<${context.bizEnBigName}Mapper, ${context.bizEnBigName}> implements I${context.bizEnBigName}Service {
+
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    public List<Map<String,Object>> selectListByPage(Page<${context.bizEnBigName}> page,${context.bizEnBigName}Dto dto) {
+
+        return baseMapper.selectListByPage(page,dto);
+    }
+
+    /**
+     * 新增${context.bizChName}
+     *
+     * @param ${context.bizEnName}
+     */
+    @Override
+    public void addItem(${context.bizEnBigName} ${context.bizEnName}) {
+        baseMapper.insert(${context.bizEnName});
+    }
+
+    /**
+     * 删除${context.bizChName}
+     *
+     * @param id
+     */
+    @Override
+    public void delItem(Integer id) {
+        baseMapper.deleteById(id);
+    }
+
+    /**
+     * 修改${context.bizChName}
+     *
+     * @param ${context.bizEnName}
+     */
+    @Override
+    public void editItem(${context.bizEnBigName} ${context.bizEnName}) {
+        baseMapper.updateById(${context.bizEnName});
+    }
+}

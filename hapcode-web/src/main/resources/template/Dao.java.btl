@@ -1,0 +1,20 @@
+package ${dao.daoPackageName};
+
+<% for(import in dao.imports!){ %>
+import ${import};
+<% } %>
+
+/**
+ * ${context.bizChName}Mapper
+ *
+ * @author Longzhong
+ * @Date ${tool.currentTime()}
+ */
+public interface ${context.bizEnBigName}Mapper extends BaseMapper<${context.bizEnBigName}> {
+
+
+    /**
+     * 获取${context.bizChName}列表
+     */
+    List<Map<String,Object>> selectListByPage(@Param("page") Page<${context.bizEnBigName}> page,@Param("dto") ${context.bizEnBigName}Dto dto);
+}

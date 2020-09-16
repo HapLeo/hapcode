@@ -1,0 +1,43 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+         <% for(item in table.fields!){ %>
+         <% if(item.customMap.type == "hidden"){ %>
+            <input id="${item.propertyName}"  type="hidden" value="#{item.${item.propertyName}!}"/>
+         <% } %>
+         <% else{ %>
+              <div class="row form-group">
+                <div class="col-sm-2">
+                    <% if(tool.isEmpty(item.comment)){ %>
+                    <label class="control-label">${item.propertyName}</label>
+                    <% }else{ %>
+                    <label class="control-label">${item.comment}</label>
+                    <% } %>
+                </div>
+                <div class="col-sm-4">
+                <% if(item.type=="datetime"){ %>
+                  <input id="${item.propertyName}"  type="text" class="form-control laydate" value="#{tool.dateTimeType(item.${item.propertyName}!)}"/>
+
+                <% }else if(item.type == "date"){ %>
+                  <input id="${item.propertyName}"  type="text" class="form-control laydate" value="#{tool.dateType(item.${item.propertyName}!)}"/>
+                <% } %>
+                <% else{%>
+                  <input id="${item.propertyName}"  type="text" class="form-control" value="#{item.${item.propertyName}!}"/>
+                  <% }%>
+                </div>
+              </div>
+         <% }%>
+    <% }%>
+        </div>
+
+        <div class="row btn-group-m-t">
+            <div class="col-sm-10">
+                <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="${context.bizEnBigName}InfoDlg.editSubmit()"/>
+                <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="${context.bizEnBigName}InfoDlg.close()"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="\${ctxModular}/static/modular/${context.moduleName}/${context.bizEnName}/${context.bizEnName}_info.js"></script>
+@}
