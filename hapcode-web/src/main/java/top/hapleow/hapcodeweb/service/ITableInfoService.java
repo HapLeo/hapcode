@@ -15,4 +15,5 @@ public interface ITableInfoService {
 
     List<TableModel> getTables();
 
+    TableModel getTableModel(String tableName);
 }

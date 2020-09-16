@@ -1,6 +1,7 @@
 package top.hapleow.hapcodecore.config;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
 /**
  * 包配置
@@ -9,12 +10,13 @@ import lombok.Data;
  * @date 2020/9/15
  */
 @Data
+@Component
 public class PackageConfig {
 
     /**
      * 模块根路径
      */
-    private String modulePath;
+    private String modulePath = "C:\\workspace\\hapcode\\hapcode-core\\";
 
     /**
      * java包路径
@@ -29,7 +31,12 @@ public class PackageConfig {
     /**
      * 包路径
      */
-    private String packagePath;
+    private String packagePath = "top/hapleow/";
 
+
+    /**
+     * 包名(类全限定名的前半部分)
+     */
+    private String packageName = "top.hapleow";
 
 }

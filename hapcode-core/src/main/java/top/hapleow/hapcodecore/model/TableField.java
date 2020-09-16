@@ -1,6 +1,7 @@
 package top.hapleow.hapcodecore.model;
 
 import lombok.Data;
+import top.hapleow.hapcodecore.common.StringUtil;
 import top.hapleow.hapcodecore.common.TypeConverter;
 
 /**
@@ -52,11 +53,12 @@ public class TableField implements IDbModel {
     public FieldModel convert2JavaModel() {
 
         FieldModel fieldModel = new FieldModel();
-        fieldModel.setName(this.COLUMN_NAME);
+        fieldModel.setColumnName(this.COLUMN_NAME);
+        fieldModel.setPropertyName(StringUtil.underline2CamelCase(this.COLUMN_NAME));
         fieldModel.setIdentity(isIdentity);
         fieldModel.setKey(this.KEY);
         fieldModel.setJavaType(TypeConverter.db2Java(this.DATA_TYPE));
-        fieldModel.setComments(this.COMMENTS);
+        fieldModel.setComment(this.COMMENTS);
 
         return fieldModel;
     }

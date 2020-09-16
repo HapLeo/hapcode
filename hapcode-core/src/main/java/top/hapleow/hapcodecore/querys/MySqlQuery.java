@@ -11,7 +11,6 @@ public class MySqlQuery extends AbstractDbQuery {
         return "show table status WHERE 1=1 ";
     }
 
-
     @Override
     public String tableFieldsSql(String tableName) {
         return "show full fields from ? ";

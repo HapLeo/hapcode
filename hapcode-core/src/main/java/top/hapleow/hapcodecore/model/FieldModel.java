@@ -12,9 +12,14 @@ import lombok.Data;
 public class FieldModel implements IJavaModel{
 
     /**
-     * 列名
+     * 列名(DB)
      */
-    private String name;
+    private String columnName;
+
+    /**
+     * 字段名(JAVA)
+     */
+    private String propertyName;
 
     /**
      * 是否是唯一
@@ -34,5 +39,5 @@ public class FieldModel implements IJavaModel{
     /**
      * 字段说明
      */
-    private String comments;
+    private String comment;
 }

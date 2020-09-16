@@ -9,5 +9,7 @@ import java.io.File;
 public class Const {
 
 
+    public static final String MODEL_TEMPLATE_NAME = "Model.java.btl";
+
     public static String tempatePath = "template" + File.separator;
 }
