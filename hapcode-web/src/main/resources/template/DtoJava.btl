@@ -1,13 +1,10 @@
-package ${dto.packageName};
+package ${context.packageName};
 
-<% for(import in dto.imports!){ %>
-import ${import};
-<% } %>
 
 /**
  * ${context.bizChName}数据传输器
  *
- * @author Longzhong
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
 

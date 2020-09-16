@@ -29,8 +29,8 @@ public class DaoXmlTemplateContext extends BasicTemplateContext {
         super(table, tablePrefix, applicationConfig);
         this.setFileName(super.getBizEnBigName() + "Mapper.xml");
         this.setFilePath(getFilePath() + subPackageName);
-        this.namespace = applicationConfig.getPackageConfig().getPackageName() + ".dao."+ super.getBizEnBigName() + "Mapper.java";
-        this.modelClassName = applicationConfig.getPackageConfig().getPackageName() + ".model." + super.getBizEnBigName() + ".java";
+        this.namespace = applicationConfig.getPackageConfig().getPackageName() + "dao."+ super.getBizEnBigName() + "Mapper";
+        this.modelClassName = applicationConfig.getPackageConfig().getPackageName() + "model." + super.getBizEnBigName();
     }
 
 }

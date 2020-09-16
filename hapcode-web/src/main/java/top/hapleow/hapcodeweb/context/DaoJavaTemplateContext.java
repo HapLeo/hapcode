@@ -5,29 +5,30 @@ import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.context.BasicTemplateContext;
 import top.hapleow.hapcodecore.model.TableModel;
 
+import java.io.File;
+
 /**
- * 基础模板模型
+ * DAO模板模型
  * 用于向模板传输数据
  *
  * @author wuyulin
  * @date 2020/9/15
  */
 @Data
-public class ModelJavaTemplateContext extends BasicTemplateContext {
+public class DaoJavaTemplateContext extends BasicTemplateContext {
 
     /**
      * 包名
      */
     private String packageName;
 
-    private String subPackageName = "model/";
+    private String subPackageName = "dao" + File.separator;
 
-
-    public ModelJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+    public DaoJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
-        this.packageName = applicationConfig.getPackageConfig().getPackageName() + "model";
-        this.setFileName(super.getBizEnBigName() +".java");
+        this.setFileName(super.getBizEnBigName() + "Mapper.java");
         this.setFilePath(getFilePath() + subPackageName);
+        this.setPackageName(applicationConfig.getPackageConfig().getPackageName() + "dao");
     }
 
 }
