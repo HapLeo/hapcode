@@ -20,6 +20,11 @@ public class FileUtil {
      */
     public static void createFile(String content, String fileName, String filePath) {
 
+        File dir = new File(filePath);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
         File file = new File(filePath + fileName);
         if (!file.exists()) {
             try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {

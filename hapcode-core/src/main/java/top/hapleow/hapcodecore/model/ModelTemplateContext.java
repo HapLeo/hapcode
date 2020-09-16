@@ -24,7 +24,7 @@ public class ModelTemplateContext extends BasicTemplateContext {
     public ModelTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
         this.packageName = applicationConfig.getPackageConfig().getPackageName() + "." + "model";
-        this.setFileName(super.getBizEnBigName() +"Model.java");
+        this.setFileName(super.getBizEnBigName() +".java");
         this.setFilePath(getFilePath() + subPackageName);
     }
 

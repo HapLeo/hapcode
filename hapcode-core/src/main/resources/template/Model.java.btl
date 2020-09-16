@@ -21,7 +21,7 @@ public class ${context.bizEnBigName} extends Model<${context.bizEnBigName}>{
 <% for(item in context.table.fields!){ %>
 
     <% if(item.key == "PRI"){ %>
-    public static final String PRIMARY_KEY_COLUMN = "${item.propertyName}";
+    public static final String PRIMARY_KEY_COLUMN = "${item.columnName}";
 
     /**
      * ${item.comment!}
