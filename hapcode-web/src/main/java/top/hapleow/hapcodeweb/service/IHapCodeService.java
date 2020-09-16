@@ -9,6 +9,6 @@ package top.hapleow.hapcodeweb.service;
 public interface IHapCodeService {
 
 
-    void coding(String tableName);
+    void coding(String tableName, String templateKey);
 
 }

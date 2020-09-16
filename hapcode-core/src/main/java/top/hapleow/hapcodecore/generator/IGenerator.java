@@ -11,7 +11,7 @@ import top.hapleow.hapcodecore.model.TableModel;
  */
 public interface IGenerator {
 
-    void execute(String templateName, TableModel templateContext, ApplicationConfig applicationConfig);
+    void execute(String templateName, TableModel tableModel, ApplicationConfig applicationConfig);
 
 }
 

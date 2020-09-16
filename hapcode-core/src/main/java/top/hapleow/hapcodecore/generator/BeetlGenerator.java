@@ -8,8 +8,8 @@ import top.hapleow.hapcodecore.common.Const;
 import top.hapleow.hapcodecore.common.FileUtil;
 import top.hapleow.hapcodecore.common.Tool;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
+import top.hapleow.hapcodecore.factory.TemplateContextFactory;
 import top.hapleow.hapcodecore.model.BasicTemplateContext;
-import top.hapleow.hapcodecore.model.ModelTemplateContext;
 import top.hapleow.hapcodecore.model.TableModel;
 
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class BeetlGenerator implements IGenerator {
      */
     public void execute(String templateName, TableModel tableModel, ApplicationConfig applicationConfig) {
 
-        BasicTemplateContext templateContext = new ModelTemplateContext(tableModel, "lzc_", applicationConfig);
+        BasicTemplateContext templateContext = TemplateContextFactory.getTemplateContext(templateName, tableModel, "lzc_", applicationConfig);
 
         //初始化代码
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();

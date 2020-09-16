@@ -2,7 +2,6 @@ package top.hapleow.hapcodeweb.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.hapleow.hapcodecore.common.Const;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.generator.IGenerator;
 import top.hapleow.hapcodecore.model.TableModel;
@@ -26,13 +25,20 @@ public class HapCodeServiceImpl implements IHapCodeService {
 
 
     @Override
-    public void coding(String tableName) {
+    public void coding(String tableName, String templateKey) {
+
+        ApplicationConfig applicationConfig = new ApplicationConfig();
 
         if (tableName == null || "".equals(tableName)) {
             throw new NullPointerException("表名为空");
         }
+
+        if (templateKey == null || "".equals(templateKey)) {
+            throw new NullPointerException("模板名称为空");
+        }
+
         TableModel tableModel = tableInfoService.getTableModel(tableName);
 
-        generator.execute(Const.MODEL_TEMPLATE_NAME, tableModel, new ApplicationConfig());
+        generator.execute(templateKey, tableModel, applicationConfig);
     }
 }

@@ -2,6 +2,7 @@ package top.hapleow.hapcodeweb.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import top.hapleow.hapcodeweb.service.IHapCodeService;
@@ -18,12 +19,11 @@ public class HapCodeController {
     private IHapCodeService hapCodeService;
 
 
-
     @RequestMapping("/coding")
     @ResponseBody
-    public String coding(String tableName){
+    public String coding(@RequestParam("tableName") String tableName, @RequestParam("templateKey") String templateKey) {
 
-        hapCodeService.coding(tableName);
+        hapCodeService.coding(tableName,templateKey);
         return "SUCCESS";
     }
 }
