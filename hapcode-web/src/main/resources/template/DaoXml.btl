@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${dao.namespace}">
+<mapper namespace="${context.namespace}">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="${dao.modelClassName}">
+    <resultMap id="BaseResultMap" type="${context.modelClassName}">
     <% for(item in table.fields!){ %>
-        <% if(item.keyFlag){ %>
+        <% if(item.key == "PRI"){ %>
         <id column="${item.name}" property="${item.propertyName}"/>
         <% }else{ %>
         <result column="${item.name}" property="${item.propertyName}"/>
@@ -16,11 +16,11 @@
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
     <% for(item in table.fields!){ %>
-        <% if(item.keyFlag){ %>
-        ${item.name} AS ${item.propertyName}
+        <% if(item.key == "PRI"){ %>
+        ${item.columnName} AS ${item.propertyName}
         <% flag = true; %>
         <% }else{ %>
-        ,${item.name} AS ${item.propertyName}
+        ,${item.columnName} AS ${item.propertyName}
         <%}%>
     <% } %>
     </sql>

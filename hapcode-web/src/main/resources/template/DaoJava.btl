@@ -1,13 +1,9 @@
-package ${dao.daoPackageName};
-
-<% for(import in dao.imports!){ %>
-import ${import};
-<% } %>
+package ${context.packageName};
 
 /**
  * ${context.bizChName}Mapper
  *
- * @author Longzhong
+ * @author ${author}
  * @Date ${tool.currentTime()}
  */
 public interface ${context.bizEnBigName}Mapper extends BaseMapper<${context.bizEnBigName}> {

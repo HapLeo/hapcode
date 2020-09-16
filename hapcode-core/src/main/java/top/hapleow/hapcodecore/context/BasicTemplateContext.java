@@ -1,9 +1,10 @@
-package top.hapleow.hapcodecore.model;
+package top.hapleow.hapcodecore.context;
 
 import lombok.Data;
 import top.hapleow.hapcodecore.common.StringUtil;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.config.PackageConfig;
+import top.hapleow.hapcodecore.model.TableModel;
 
 /**
  * 基础模板模型
