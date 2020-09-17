@@ -2,11 +2,11 @@
 <div class="ibox float-e-margins">
     <div class="ibox-content">
         <div class="form-horizontal">
-         <% for(item in table.fields!){ %>
-              <% if(!item.keyFlag){ %>
+         <% for(item in context.table.fields!){ %>
+              <% if(item.key != "PRI"){ %>
               <div class="row form-group">
                 <div class="col-sm-2">
-                    <% if(tool.isEmpty(item.comment)){ %>
+                    <% if(item.comment == null){ %>
                     <label class="control-label">${item.propertyName}</label>
                     <% }else{ %>
                     <label class="control-label">${item.comment}</label>
@@ -28,5 +28,5 @@
         </div>
     </div>
 </div>
-<script src="\${ctxModular}/static/modular/${context.moduleName}/${context.bizEnName}/${context.bizEnName}_info.js"></script>
+<script src="\${ctxModular}/static/modular/${context.bizModulePath}${context.bizEnName}/${context.bizEnName}_info.js"></script>
 @}

@@ -14,15 +14,15 @@ import top.hapleow.hapcodecore.model.TableModel;
  * @date 2020/9/15
  */
 @Data
-public class PageHtmlTemplateContext extends BasicTemplateContext {
+public class PageEditHtmlTemplateContext extends BasicTemplateContext {
 
 
-    public PageHtmlTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+    public PageEditHtmlTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
 
         super(table, tablePrefix, applicationConfig);
 
         PackageConfig packageConfig = applicationConfig.getPackageConfig();
-        this.setFileName(super.getBizEnName() + ".html");
+        this.setFileName(super.getBizEnName() + "_edit.html");
         this.setFilePath(packageConfig.getModulePath() + packageConfig.getHtmlPath() + packageConfig.getBizModulePath() + super.getBizEnName() + "/");
     }
 
