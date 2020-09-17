@@ -7,7 +7,7 @@ var @{context.bizEnBigName} = {
     table: null,
     layerIndex: -1,
     itemId:'id',
-    <% for(item in table.fields!){ %>
+    <% for(item in context.table.fields!){ %>
         <% if(item.key == "PRI"){ %>
     sort: '@{item.columnName}',
     idField: '@{item.propertyName}',
@@ -21,11 +21,11 @@ var @{context.bizEnBigName} = {
 @{context.bizEnBigName}.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
-        <% for(item in table.fields!){ %>
-            <% if(item.customMap.type == "hidden"){ %>
+        <% for(item in context.table.fields!){ %>
+            <% if(item.javaType == "Integer"){ %>
                     {title: '@{item.propertyName}', titleTooltip: '@{item.propertyName}', field: '@{item.propertyName}', visible: false, align: 'center', valign: 'middle'},
                 <% }else{ %>
-                    <% if(tool.isEmpty(item.comment)){ %>
+                    <% if(item.comment == null){ %>
                     {title: '@{item.propertyName}', titleTooltip: '@{item.propertyName}', field: '@{item.propertyName}', visible: true, align: 'center', valign: 'middle'},
                     <% }else{ %>
                     {title: '@{item.comment}', titleTooltip: '@{item.comment}', field: '@{item.propertyName}', visible: true, align: 'center', valign: 'middle'},

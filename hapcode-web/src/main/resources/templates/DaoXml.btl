@@ -4,18 +4,18 @@
 
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="@{context.modelClassName}">
-    <% for(item in table.fields!){ %>
+    <% for(item in context.table.fields!){ %>
         <% if(item.key == "PRI"){ %>
-        <id column="@{item.name}" property="@{item.propertyName}"/>
+        <id column="@{item.columnName}" property="@{item.propertyName}"/>
         <% }else{ %>
-        <result column="@{item.name}" property="@{item.propertyName}"/>
+        <result column="@{item.columnName}" property="@{item.propertyName}"/>
         <%}%>
     <% } %>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-    <% for(item in table.fields!){ %>
+    <% for(item in context.table.fields!){ %>
         <% if(item.key == "PRI"){ %>
         @{item.columnName} AS @{item.propertyName}
         <% flag = true; %>
@@ -28,7 +28,7 @@
     <select id="selectListByPage" resultType="java.util.Map">
         select
         <include refid="Base_Column_List"/>
-        from @{table.name!}
+        from @{context.table.name!}
     </select>
 
 </mapper>

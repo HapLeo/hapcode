@@ -45,12 +45,9 @@ var @{context.bizEnBigName}InfoDlg = {
  */
 @{context.bizEnBigName}InfoDlg.collectData = function() {
     this
-    <% for(item in table.fields!){ %>
-    <% if(itemLP.last != true){ %>
+    <% for(item in context.table.fields!){ %>
     .set('@{item.propertyName}')
-    <% }else{ %>
-    .set('@{item.propertyName}');
-    <% }} %>
+    <% } %>
 }
 
 /**
