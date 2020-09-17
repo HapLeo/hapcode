@@ -1,4 +1,4 @@
-package ${context.packageName};
+package @{context.packageName};
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -7,16 +7,16 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ${context.bizChName}Mapper
+ * @{context.bizChName}Mapper
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
-public interface ${context.bizEnBigName}Mapper extends BaseMapper<${context.bizEnBigName}> {
+public interface @{context.bizEnBigName}Mapper extends BaseMapper<@{context.bizEnBigName}> {
 
 
     /**
-     * 获取${context.bizChName}列表
+     * 获取@{context.bizChName}列表
      */
-    List<Map<String,Object>> selectListByPage(@Param("page") Page<${context.bizEnBigName}> page,@Param("dto") ${context.bizEnBigName}Dto dto);
+    List<Map<String,Object>> selectListByPage(@Param("page") Page<@{context.bizEnBigName}> page,@Param("dto") @{context.bizEnBigName}Dto dto);
 }

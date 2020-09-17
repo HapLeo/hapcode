@@ -1,14 +1,14 @@
-package ${context.packageName};
+package @{context.packageName};
 
 
 /**
- * ${context.bizChName}数据传输器
+ * @{context.bizChName}数据传输器
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
 
-public class ${context.bizEnBigName}Dto {
+public class @{context.bizEnBigName}Dto {
 
 
 

@@ -1,4 +1,4 @@
-package ${context.packageName};
+package @{context.packageName};
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
@@ -7,31 +7,31 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ${context.bizChName}服务接口
+ * @{context.bizChName}服务接口
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
-public interface I${context.bizEnBigName}Service extends IService<${context.bizEnBigName}> {
+public interface I@{context.bizEnBigName}Service extends IService<@{context.bizEnBigName}> {
 
 
     /**
-     * 新增${context.bizChName}
+     * 新增@{context.bizChName}
      */
-    void addItem(${context.bizEnBigName} ${context.bizEnName});
+    void addItem(@{context.bizEnBigName} @{context.bizEnName});
 
     /**
-     * 删除${context.bizChName}
+     * 删除@{context.bizChName}
      */
     void delItem(Integer id);
 
     /**
-     * 修改${context.bizChName}
+     * 修改@{context.bizChName}
      */
-    void editItem(${context.bizEnBigName} ${context.bizEnName});
+    void editItem(@{context.bizEnBigName} @{context.bizEnName});
 
     /**
-     * 获取${context.bizChName}列表
+     * 获取@{context.bizChName}列表
      */
-    List<Map<String,Object>> selectListByPage(Page<${context.bizEnBigName}> page,${context.bizEnBigName}Dto dto);
+    List<Map<String,Object>> selectListByPage(Page<@{context.bizEnBigName}> page,@{context.bizEnBigName}Dto dto);
 }

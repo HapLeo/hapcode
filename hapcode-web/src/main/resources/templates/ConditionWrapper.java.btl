@@ -1,16 +1,16 @@
-package ${model.packageName};
+package @{model.packageName};
 
 <% for(import in model.imports!){ %>
-import ${import};
+import @{import};
 <% } %>
 
 /**
- * ${context.bizChName}条件包装器
+ * @{context.bizChName}条件包装器
  *
  * @author Longzhong
- * @Date ${tool.currentTime()}
+ * @Date @{tool.currentTime()}
  */
-public class ${context.bizEnBigName}ConditionWrapper {
+public class @{context.bizEnBigName}ConditionWrapper {
 
 
 

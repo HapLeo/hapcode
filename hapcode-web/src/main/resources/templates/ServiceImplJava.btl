@@ -1,4 +1,4 @@
-package ${context.packageName};
+package @{context.packageName};
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -8,35 +8,35 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ${context.bizChName}服务实现类
+ * @{context.bizChName}服务实现类
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
  @Service
-public class ${context.bizEnBigName}ServiceImpl extends ServiceImpl<${context.bizEnBigName}Mapper, ${context.bizEnBigName}> implements I${context.bizEnBigName}Service {
+public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bizEnBigName}Mapper, @{context.bizEnBigName}> implements I@{context.bizEnBigName}Service {
 
 
     /**
-     * 获取${context.bizChName}列表
+     * 获取@{context.bizChName}列表
      */
-    public List<Map<String,Object>> selectListByPage(Page<${context.bizEnBigName}> page,${context.bizEnBigName}Dto dto) {
+    public List<Map<String,Object>> selectListByPage(Page<@{context.bizEnBigName}> page,@{context.bizEnBigName}Dto dto) {
 
         return baseMapper.selectListByPage(page,dto);
     }
 
     /**
-     * 新增${context.bizChName}
+     * 新增@{context.bizChName}
      *
-     * @param ${context.bizEnName}
+     * @param @{context.bizEnName}
      */
     @Override
-    public void addItem(${context.bizEnBigName} ${context.bizEnName}) {
-        baseMapper.insert(${context.bizEnName});
+    public void addItem(@{context.bizEnBigName} @{context.bizEnName}) {
+        baseMapper.insert(@{context.bizEnName});
     }
 
     /**
-     * 删除${context.bizChName}
+     * 删除@{context.bizChName}
      *
      * @param id
      */
@@ -46,12 +46,12 @@ public class ${context.bizEnBigName}ServiceImpl extends ServiceImpl<${context.bi
     }
 
     /**
-     * 修改${context.bizChName}
+     * 修改@{context.bizChName}
      *
-     * @param ${context.bizEnName}
+     * @param @{context.bizEnName}
      */
     @Override
-    public void editItem(${context.bizEnBigName} ${context.bizEnName}) {
-        baseMapper.updateById(${context.bizEnName});
+    public void editItem(@{context.bizEnBigName} @{context.bizEnName}) {
+        baseMapper.updateById(@{context.bizEnName});
     }
 }

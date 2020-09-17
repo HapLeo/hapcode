@@ -1,15 +1,15 @@
-package ${context.packageName};
+package @{context.packageName};
 
 /**
- * ${context.bizChName}结果包装器
+ * @{context.bizChName}结果包装器
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
 
-public class ${context.bizEnBigName}Wrapper extends BaseControllerWrapper {
+public class @{context.bizEnBigName}Wrapper extends BaseControllerWrapper {
 
-    public ${context.bizEnBigName}Wrapper(Object result) {
+    public @{context.bizEnBigName}Wrapper(Object result) {
             super(result);
         }
 

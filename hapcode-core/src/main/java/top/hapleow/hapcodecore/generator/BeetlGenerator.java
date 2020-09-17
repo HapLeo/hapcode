@@ -45,6 +45,8 @@ public class BeetlGenerator implements IGenerator {
         }
         //cfg.setHtmlTagFlag("!!!");
         cfg.setHtmlTagSupport(false);
+        cfg.setPlaceholderStart("@{");
+        cfg.setPlaceholderEnd("}");
         GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
 
         //获取模板

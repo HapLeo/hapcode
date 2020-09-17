@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="${context.namespace}">
+<mapper namespace="@{context.namespace}">
 
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="${context.modelClassName}">
+    <resultMap id="BaseResultMap" type="@{context.modelClassName}">
     <% for(item in table.fields!){ %>
         <% if(item.key == "PRI"){ %>
-        <id column="${item.name}" property="${item.propertyName}"/>
+        <id column="@{item.name}" property="@{item.propertyName}"/>
         <% }else{ %>
-        <result column="${item.name}" property="${item.propertyName}"/>
+        <result column="@{item.name}" property="@{item.propertyName}"/>
         <%}%>
     <% } %>
     </resultMap>
@@ -17,10 +17,10 @@
     <sql id="Base_Column_List">
     <% for(item in table.fields!){ %>
         <% if(item.key == "PRI"){ %>
-        ${item.columnName} AS ${item.propertyName}
+        @{item.columnName} AS @{item.propertyName}
         <% flag = true; %>
         <% }else{ %>
-        ,${item.columnName} AS ${item.propertyName}
+        ,@{item.columnName} AS @{item.propertyName}
         <%}%>
     <% } %>
     </sql>
@@ -28,7 +28,7 @@
     <select id="selectListByPage" resultType="java.util.Map">
         select
         <include refid="Base_Column_List"/>
-        from ${table.name!}
+        from @{table.name!}
     </select>
 
 </mapper>

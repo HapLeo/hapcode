@@ -1,16 +1,16 @@
 /**
- * ${context.bizChName}管理初始化
+ * @{context.bizChName}管理初始化
  */
-var ${context.bizEnBigName} = {
-    id: "${context.bizEnBigName}Table",	//表格id
+var @{context.bizEnBigName} = {
+    id: "@{context.bizEnBigName}Table",	//表格id
     seItem: null,		//选中的条目
     table: null,
     layerIndex: -1,
     itemId:'id',
     <% for(item in table.fields!){ %>
         <% if(item.key == "PRI"){ %>
-    sort: '${item.columnName}',
-    idField: '${item.propertyName}',
+    sort: '@{item.columnName}',
+    idField: '@{item.propertyName}',
         <% } %>
     <% } %>
 };
@@ -18,17 +18,17 @@ var ${context.bizEnBigName} = {
 /**
  * 初始化表格的列
  */
-${context.bizEnBigName}.initColumn = function () {
+@{context.bizEnBigName}.initColumn = function () {
     return [
         {field: 'selectItem', radio: true},
         <% for(item in table.fields!){ %>
             <% if(item.customMap.type == "hidden"){ %>
-                    {title: '${item.propertyName}', titleTooltip: '${item.propertyName}', field: '${item.propertyName}', visible: false, align: 'center', valign: 'middle'},
+                    {title: '@{item.propertyName}', titleTooltip: '@{item.propertyName}', field: '@{item.propertyName}', visible: false, align: 'center', valign: 'middle'},
                 <% }else{ %>
                     <% if(tool.isEmpty(item.comment)){ %>
-                    {title: '${item.propertyName}', titleTooltip: '${item.propertyName}', field: '${item.propertyName}', visible: true, align: 'center', valign: 'middle'},
+                    {title: '@{item.propertyName}', titleTooltip: '@{item.propertyName}', field: '@{item.propertyName}', visible: true, align: 'center', valign: 'middle'},
                     <% }else{ %>
-                    {title: '${item.comment}', titleTooltip: '${item.comment}', field: '${item.propertyName}', visible: true, align: 'center', valign: 'middle'},
+                    {title: '@{item.comment}', titleTooltip: '@{item.comment}', field: '@{item.propertyName}', visible: true, align: 'center', valign: 'middle'},
                     <% } %>
                 <% }%>
         <% }%>
@@ -55,19 +55,19 @@ function operationFormatter(value, row, index) {
  */
 window.operationEvents = {
     'click .edit': function (e, value, row, index) {
-        ${context.bizEnBigName}.toEdit(row);
+        @{context.bizEnBigName}.toEdit(row);
     },
     'click .delete': function (e, value, row, index) {
-        ${context.bizEnBigName}.delete(row);
+        @{context.bizEnBigName}.delete(row);
     },
 };
 
 /**
  * 检查是否选中
  */
-${context.bizEnBigName}.check = function (row) {
+@{context.bizEnBigName}.check = function (row) {
     if(!Longzhong.isEmpty(row)){
-        ${context.bizEnBigName}.seItem = row;
+        @{context.bizEnBigName}.seItem = row;
         return true;
     }
 
@@ -76,59 +76,59 @@ ${context.bizEnBigName}.check = function (row) {
         Longzhong.info("请先选中表格中的某一记录！");
         return false;
     }else{
-        ${context.bizEnBigName}.seItem = selected[0];
+        @{context.bizEnBigName}.seItem = selected[0];
         return true;
     }
 };
 
 /**
- * 点击添加${context.bizChName}
+ * 点击添加@{context.bizChName}
  */
-${context.bizEnBigName}.toAdd = function () {
+@{context.bizEnBigName}.toAdd = function () {
     this.seItem = null;
     var wh = Longzhong.getWinWidthHeight(0,0,1000,800);
     var index = layer.open({
         type: 2,
-        title: '添加${context.bizChName}',
+        title: '添加@{context.bizChName}',
         area: [wh[0], wh[1]], //宽高
         fix: false, //不固定
         maxmin: true,
-        content: Longzhong.ctxPath + '/${context.bizEnName}/toAdd'
+        content: Longzhong.ctxPath + '/@{context.bizEnName}/toAdd'
     });
     this.layerIndex = index;
 };
 
 /**
- * 打开查看${context.bizChName}详情
+ * 打开查看@{context.bizChName}详情
  */
-${context.bizEnBigName}.toEdit = function (row) {
+@{context.bizEnBigName}.toEdit = function (row) {
     var wh = Longzhong.getWinWidthHeight(0,0,1000,800);
     if (this.check(row)) {
         var index = layer.open({
             type: 2,
-            title: '${context.bizChName}详情',
+            title: '@{context.bizChName}详情',
             area: [wh[0], wh[1]], //宽高
             fix: false, //不固定
             maxmin: true,
-            content: Longzhong.ctxPath + '/${context.bizEnName}/toEdit/' + ${context.bizEnBigName}.seItem[${context.bizEnBigName}.idField]
+            content: Longzhong.ctxPath + '/@{context.bizEnName}/toEdit/' + @{context.bizEnBigName}.seItem[@{context.bizEnBigName}.idField]
         });
         this.layerIndex = index;
     }
 };
 
 /**
- * 删除${context.bizChName}
+ * 删除@{context.bizChName}
  */
-${context.bizEnBigName}.delete = function (row) {
+@{context.bizEnBigName}.delete = function (row) {
     if (this.check(row)) {
         var operation = function(){
-                var ajax = new $ax(Longzhong.ctxPath + "/${context.bizEnName}/delete", function (data) {
+                var ajax = new $ax(Longzhong.ctxPath + "/@{context.bizEnName}/delete", function (data) {
                     Longzhong.success("删除成功!");
-                    ${context.bizEnBigName}.table.refresh();
+                    @{context.bizEnBigName}.table.refresh();
                 }, function (data) {
                     Longzhong.error("删除失败!" + data.responseJSON.message + "!");
                 });
-                ajax.set(${context.bizEnBigName}.idField,${context.bizEnBigName}.seItem[${context.bizEnBigName}.idField]);
+                ajax.set(@{context.bizEnBigName}.idField,@{context.bizEnBigName}.seItem[@{context.bizEnBigName}.idField]);
                 ajax.start();
         }
         Longzhong.confirm("确定删除该记录吗？",operation);
@@ -136,32 +136,32 @@ ${context.bizEnBigName}.delete = function (row) {
 };
 
 /**
- * 查询${context.bizChName}列表
+ * 查询@{context.bizChName}列表
  */
-${context.bizEnBigName}.list = function () {
+@{context.bizEnBigName}.list = function () {
     var queryData = {};
     queryData['condition'] = $("#condition").val();
-    ${context.bizEnBigName}.table.refresh({query: queryData, pageNumber: 1});
+    @{context.bizEnBigName}.table.refresh({query: queryData, pageNumber: 1});
 };
 
 /**
  * 初始化页面
  */
-${context.bizEnBigName}.init = function() {
+@{context.bizEnBigName}.init = function() {
 
     // 初始化列表数据
-    var defaultColunms = ${context.bizEnBigName}.initColumn();
-    var table = new BSTable(${context.bizEnBigName}.id, "/${context.bizEnName}/list", defaultColunms);
+    var defaultColunms = @{context.bizEnBigName}.initColumn();
+    var table = new BSTable(@{context.bizEnBigName}.id, "/@{context.bizEnName}/list", defaultColunms);
     table.setPaginationType("server");
     table.setQueryParams({
-        "sort": ${context.bizEnBigName}.sort,
+        "sort": @{context.bizEnBigName}.sort,
     })
-    ${context.bizEnBigName}.table = table.init();
+    @{context.bizEnBigName}.table = table.init();
 }
 
 $(function () {
 
 // 调用初始化页面方法
-${context.bizEnBigName}.init();
+@{context.bizEnBigName}.init();
 
 });

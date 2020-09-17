@@ -1,4 +1,4 @@
-package ${context.packageName};
+package @{context.packageName};
 
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
@@ -8,37 +8,37 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 <% for(import in context.imports!){ %>
-import ${import};
+import @{import};
 <% } %>
 
 /**
- * ${context.bizChName}
+ * @{context.bizChName}
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("${context.table.name}")
-public class ${context.bizEnBigName} extends Model<${context.bizEnBigName}>{
+@TableName("@{context.table.name}")
+public class @{context.bizEnBigName} extends Model<@{context.bizEnBigName}>{
 
 <% for(item in context.table.fields!){ %>
 
     <% if(item.key == "PRI"){ %>
-    public static final String PRIMARY_KEY_COLUMN = "${item.columnName}";
+    public static final String PRIMARY_KEY_COLUMN = "@{item.columnName}";
 
     /**
-     * ${item.comment!}
+     * @{item.comment!}
      */
-    @TableId("${item.columnName}")
-    private ${item.javaType} ${item.propertyName};
+    @TableId("@{item.columnName}")
+    private @{item.javaType} @{item.propertyName};
     <% }else{ %>
 
     /**
-     * ${item.comment!}
+     * @{item.comment!}
      */
-    @TableField("${item.columnName}")
-    private ${item.javaType} ${item.propertyName};
+    @TableField("@{item.columnName}")
+    private @{item.javaType} @{item.propertyName};
     <%}%>
 <% } %>
 

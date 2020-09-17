@@ -1,4 +1,4 @@
-package ${context.packageName};
+package @{context.packageName};
 
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -14,90 +14,90 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * ${context.bizChName}控制器
+ * @{context.bizChName}控制器
  *
- * @author ${context.author}
- * @Date ${tool.currentTime()}
+ * @author @{context.author}
+ * @Date @{tool.currentTime()}
  */
 @Controller
-@RequestMapping("/${context.bizEnName}")
-public class ${context.bizEnBigName}Controller extends BaseController {
+@RequestMapping("/@{context.bizEnName}")
+public class @{context.bizEnBigName}Controller extends BaseController {
 
-    private String PREFIX = "/${context.bizModulePath}${context.bizEnName}/";
+    private String PREFIX = "/@{context.bizModulePath}@{context.bizEnName}/";
 
     @Autowired
-    private I${context.bizEnBigName}Service ${context.bizEnName}Service;
+    private I@{context.bizEnBigName}Service @{context.bizEnName}Service;
 
 
     /**
-     * 跳转到${context.bizChName}首页
+     * 跳转到@{context.bizChName}首页
      */
     @RequestMapping("")
     public String index() {
-        return PREFIX + "${context.bizEnName}.html";
+        return PREFIX + "@{context.bizEnName}.html";
     }
 
     /**
-     * 跳转到添加${context.bizChName}
+     * 跳转到添加@{context.bizChName}
      */
     @RequestMapping("/toAdd")
     public String toAdd() {
-        return PREFIX + "${context.bizEnName}_add.html";
+        return PREFIX + "@{context.bizEnName}_add.html";
     }
 
     /**
-     * 跳转到修改${context.bizChName}
+     * 跳转到修改@{context.bizChName}
      */
     @RequestMapping("/toEdit/{id}")
     public String toEdit(@PathVariable("id") Integer id, Model model) {
 
-        model.addAttribute("item", ${context.bizEnName}Service.getById(id));
-        return PREFIX + "${context.bizEnName}_edit.html";
+        model.addAttribute("item", @{context.bizEnName}Service.getById(id));
+        return PREFIX + "@{context.bizEnName}_edit.html";
     }
 
     /**
-     * 新增${context.bizChName}
+     * 新增@{context.bizChName}
      */
     @RequestMapping(value = "/add")
     @ResponseBody
-    public Object add(${context.bizEnBigName} ${context.bizEnName}) {
-        ${context.bizEnName}Service.addItem(${context.bizEnName});
+    public Object add(@{context.bizEnBigName} @{context.bizEnName}) {
+        @{context.bizEnName}Service.addItem(@{context.bizEnName});
         return SUCCESS_TIP;
     }
 
     /**
-     * 删除${context.bizChName}
+     * 删除@{context.bizChName}
      */
     @RequestMapping(value = "/delete")
     @ResponseBody
     public Object delete(@RequestParam Integer id) {
-        ${context.bizEnName}Service.delItem(id);
+        @{context.bizEnName}Service.delItem(id);
         return SUCCESS_TIP;
     }
 
     /**
-     * 修改${context.bizChName}
+     * 修改@{context.bizChName}
      */
     @RequestMapping(value = "/edit")
     @ResponseBody
-    public Object edit(${context.bizEnBigName} ${context.bizEnName}) {
-        ${context.bizEnName}Service.editItem(${context.bizEnName});
+    public Object edit(@{context.bizEnBigName} @{context.bizEnName}) {
+        @{context.bizEnName}Service.editItem(@{context.bizEnName});
         return SUCCESS_TIP;
     }
 
     /**
-     * 获取${context.bizChName}列表
+     * 获取@{context.bizChName}列表
      */
     @RequestMapping(value = "/list")
     @ResponseBody
-    public Object list(${context.bizEnBigName}Dto dto) {
+    public Object list(@{context.bizEnBigName}Dto dto) {
 
-        Page<${context.bizEnBigName}> page = PageFactory.defaultPage();
+        Page<@{context.bizEnBigName}> page = PageFactory.defaultPage();
         if (page.getOrders().size() == 0) {
-            page.setOrders(OrderItem.descs(${context.bizEnBigName}.PRIMARY_KEY_COLUMN));
+            page.setOrders(OrderItem.descs(@{context.bizEnBigName}.PRIMARY_KEY_COLUMN));
         }
-        List<Map<String, Object>> result = ${context.bizEnName}Service.selectListByPage(page, dto);
-        List<${context.bizEnBigName}> wrap = (List<${context.bizEnBigName}>) new ${context.bizEnBigName}Wrapper(result).wrap();
+        List<Map<String, Object>> result = @{context.bizEnName}Service.selectListByPage(page, dto);
+        List<@{context.bizEnBigName}> wrap = (List<@{context.bizEnBigName}>) new @{context.bizEnBigName}Wrapper(result).wrap();
         page.setRecords(wrap);
 
         return super.packForAPP(page);

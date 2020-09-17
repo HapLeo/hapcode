@@ -1,14 +1,14 @@
 /**
- * 初始化${context.bizChName}详情对话框
+ * 初始化@{context.bizChName}详情对话框
  */
-var ${context.bizEnBigName}InfoDlg = {
+var @{context.bizEnBigName}InfoDlg = {
     data : {}
 };
 
 /**
  * 清除数据
  */
-${context.bizEnBigName}InfoDlg.clearData = function() {
+@{context.bizEnBigName}InfoDlg.clearData = function() {
     data = {};
 }
 
@@ -18,7 +18,7 @@ ${context.bizEnBigName}InfoDlg.clearData = function() {
  * @param key 数据的名称
  * @param val 数据的具体值
  */
-${context.bizEnBigName}InfoDlg.set = function(key, val) {
+@{context.bizEnBigName}InfoDlg.set = function(key, val) {
     this.data[key] = Longzhong.getVal(key, val);
     return this;
 }
@@ -29,42 +29,42 @@ ${context.bizEnBigName}InfoDlg.set = function(key, val) {
  * @param key 数据的名称
  * @param val 数据的具体值
  */
-${context.bizEnBigName}InfoDlg.get = function(key) {
+@{context.bizEnBigName}InfoDlg.get = function(key) {
     return Longzhong.getVal(key);
 }
 
 /**
  * 关闭此对话框
  */
-${context.bizEnBigName}InfoDlg.close = function() {
-    parent.layer.close(window.parent.${context.bizEnBigName}.layerIndex);
+@{context.bizEnBigName}InfoDlg.close = function() {
+    parent.layer.close(window.parent.@{context.bizEnBigName}.layerIndex);
 }
 
 /**
  * 收集数据
  */
-${context.bizEnBigName}InfoDlg.collectData = function() {
+@{context.bizEnBigName}InfoDlg.collectData = function() {
     this
     <% for(item in table.fields!){ %>
     <% if(itemLP.last != true){ %>
-    .set('${item.propertyName}')
+    .set('@{item.propertyName}')
     <% }else{ %>
-    .set('${item.propertyName}');
+    .set('@{item.propertyName}');
     <% }} %>
 }
 
 /**
  * 提交添加
  */
-${context.bizEnBigName}InfoDlg.addSubmit = function() {
+@{context.bizEnBigName}InfoDlg.addSubmit = function() {
 
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Longzhong.ctxPath + "/${context.bizEnName}/add", function(data){
+    var ajax = new $ax(Longzhong.ctxPath + "/@{context.bizEnName}/add", function(data){
         Longzhong.success("添加成功!");
-        window.parent.${context.bizEnBigName}.table.refresh();
-        ${context.bizEnBigName}InfoDlg.close();
+        window.parent.@{context.bizEnBigName}.table.refresh();
+        @{context.bizEnBigName}InfoDlg.close();
     },function(data){
         Longzhong.error("添加失败!" + data.responseJSON.message + "!");
     });
@@ -75,15 +75,15 @@ ${context.bizEnBigName}InfoDlg.addSubmit = function() {
 /**
  * 提交修改
  */
-${context.bizEnBigName}InfoDlg.editSubmit = function() {
+@{context.bizEnBigName}InfoDlg.editSubmit = function() {
 
     this.collectData();
 
     //提交信息
-    var ajax = new $ax(Longzhong.ctxPath + "/${context.bizEnName}/edit", function(data){
+    var ajax = new $ax(Longzhong.ctxPath + "/@{context.bizEnName}/edit", function(data){
         Longzhong.success("修改成功!");
-        window.parent.${context.bizEnBigName}.table.refresh();
-        ${context.bizEnBigName}InfoDlg.close();
+        window.parent.@{context.bizEnBigName}.table.refresh();
+        @{context.bizEnBigName}InfoDlg.close();
     },function(data){
         Longzhong.error("修改失败!" + data.responseJSON.message + "!");
     });
@@ -94,7 +94,7 @@ ${context.bizEnBigName}InfoDlg.editSubmit = function() {
 /**
  * 初始化页面
  */
-${context.bizEnBigName}InfoDlg.init = function() {
+@{context.bizEnBigName}InfoDlg.init = function() {
     laydate.render({elem:'.laydate'});
 }
 
@@ -102,6 +102,6 @@ ${context.bizEnBigName}InfoDlg.init = function() {
 $(function() {
 
 // 调用初始化页面方法
-${context.bizEnBigName}InfoDlg.init();
+@{context.bizEnBigName}InfoDlg.init();
 
 });
