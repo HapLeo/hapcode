@@ -6,11 +6,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}Mapper
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
 public interface @{context.bizEnBigName}Mapper extends BaseMapper<@{context.bizEnBigName}> {
 

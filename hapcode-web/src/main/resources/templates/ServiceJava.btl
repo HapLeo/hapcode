@@ -6,11 +6,12 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import java.util.List;
 import java.util.Map;
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}服务接口
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
 public interface I@{context.bizEnBigName}Service extends IService<@{context.bizEnBigName}> {
 

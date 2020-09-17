@@ -1,12 +1,12 @@
 package @{context.packageName};
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}结果包装器
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
-
 public class @{context.bizEnBigName}Wrapper extends BaseControllerWrapper {
 
     public @{context.bizEnBigName}Wrapper(Object result) {

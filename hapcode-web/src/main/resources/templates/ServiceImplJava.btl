@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}服务实现类
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
  @Service
 public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bizEnBigName}Mapper, @{context.bizEnBigName}> implements I@{context.bizEnBigName}Service {

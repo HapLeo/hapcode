@@ -6,7 +6,6 @@ import org.beetl.core.Template;
 import org.beetl.core.resource.ClasspathResourceLoader;
 import top.hapleow.hapcodecore.common.Const;
 import top.hapleow.hapcodecore.common.FileUtil;
-import top.hapleow.hapcodecore.common.Tool;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.context.BasicTemplateContext;
 import top.hapleow.hapcodecore.factory.TemplateContextFactory;
@@ -52,7 +51,7 @@ public class BeetlGenerator implements IGenerator {
         //获取模板
         Template t = gt.getTemplate(Const.tempatePath + templateName);
         t.binding("context", templateContext);
-        gt.registerFunction("tool.currentTime", (objects, context) -> Tool.currentTime());
+        //gt.registerFunction("tool.currentTime", (objects, context) -> Tool.currentTime());
 
 
         //渲染结果

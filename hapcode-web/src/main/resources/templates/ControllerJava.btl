@@ -13,11 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 import java.util.Map;
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}控制器
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
 @Controller
 @RequestMapping("/@{context.bizEnName}")

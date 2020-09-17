@@ -6,16 +6,16 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
 <% for(import in context.imports!){ %>
 import @{import};
 <% } %>
 
+<% var date = date(); %>
 /**
  * @{context.bizChName}
  *
  * @author @{context.author}
- * @Date @{tool.currentTime()}
+ * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
