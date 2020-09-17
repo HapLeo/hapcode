@@ -43,13 +43,15 @@ public class BeetlGenerator implements IGenerator {
         } catch (IOException e) {
             throw new RuntimeException("Beetl配置不存在");
         }
-
+        //cfg.setHtmlTagFlag("!!!");
+        cfg.setHtmlTagSupport(false);
         GroupTemplate gt = new GroupTemplate(resourceLoader, cfg);
 
         //获取模板
         Template t = gt.getTemplate(Const.tempatePath + templateName);
         t.binding("context", templateContext);
         gt.registerFunction("tool.currentTime", (objects, context) -> Tool.currentTime());
+
 
         //渲染结果
         String content = t.render();

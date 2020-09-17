@@ -24,6 +24,16 @@ public class PackageConfig {
     private String javaPath = "src/main/java/";
 
     /**
+     * html包路径
+     */
+    private String htmlPath = "src/main/webapp/WEB-INF/view/";
+
+    /**
+     * js包路径
+     */
+    private String jsPath = "src/main/webapp/static/modular/";
+
+    /**
      * test包路径
      */
     private String testPath = "src/main/test/";

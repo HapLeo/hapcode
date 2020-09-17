@@ -34,5 +34,5 @@
         </div>
     </div>
 </div>
-<script src="\${ctxModular}/static/modular/${context.moduleName}/${context.bizEnName}/${context.bizEnName}.js"></script>
+<script src="\${ctxModular}/static/modular/${context.bizModulePath}${context.bizEnName}/${context.bizEnName}.js"></script>
 @}

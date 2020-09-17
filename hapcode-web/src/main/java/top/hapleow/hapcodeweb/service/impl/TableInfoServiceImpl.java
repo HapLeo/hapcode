@@ -62,9 +62,15 @@ public class TableInfoServiceImpl implements ITableInfoService {
             }
         }
         TableModel cacheModel = Cache.TABLE_MODEL_CACHE.get(tableName);
-        if (cacheModel != null){
-            List<FieldModel> tableFields = getTableFields(tableName);
-            cacheModel.setFields(tableFields);
+        if (cacheModel != null) {
+            List<FieldModel> fields = cacheModel.getFields();
+            if (fields == null) {
+                synchronized (Cache.TABLE_MODEL_CACHE) {
+                    if (cacheModel.getFields() == null) {
+                        cacheModel.setFields(getTableFields(tableName));
+                    }
+                }
+            }
         }
 
         return cacheModel;
