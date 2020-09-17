@@ -8,8 +8,8 @@ var ${context.bizEnBigName} = {
     layerIndex: -1,
     itemId:'id',
     <% for(item in table.fields!){ %>
-        <% if(item.keyFlag){ %>
-    sort: '${item.name}',
+        <% if(item.key == "PRI"){ %>
+    sort: '${item.columnName}',
     idField: '${item.propertyName}',
         <% } %>
     <% } %>
