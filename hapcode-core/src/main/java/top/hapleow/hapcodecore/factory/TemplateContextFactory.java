@@ -1,5 +1,6 @@
 package top.hapleow.hapcodecore.factory;
 
+import top.hapleow.hapcodecore.common.Const;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.context.BasicTemplateContext;
 import top.hapleow.hapcodecore.model.TableModel;
@@ -23,7 +24,7 @@ public class TemplateContextFactory {
 
     public static void autoRegistTemplate() {
         try {
-            URL systemResource = ClassLoader.getSystemResource("template/");
+            URL systemResource = ClassLoader.getSystemResource(Const.tempatePath);
 
             File file = new File(systemResource.getPath());
 
