@@ -1,13 +1,15 @@
-package ${service.serviceInterfacePackageName};
+package ${context.packageName};
 
-<% for(import in service.serviceInterfaceImports!){ %>
-import ${import};
-<% } %>
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- * ${context.bizChName}控制器
+ * ${context.bizChName}服务接口
  *
- * @author Longzhong
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
 public interface I${context.bizEnBigName}Service extends IService<${context.bizEnBigName}> {
@@ -16,7 +18,7 @@ public interface I${context.bizEnBigName}Service extends IService<${context.bizE
     /**
      * 新增${context.bizChName}
      */
-    void addItem(${context.entityName} ${context.bizEnName});
+    void addItem(${context.bizEnBigName} ${context.bizEnName});
 
     /**
      * 删除${context.bizChName}
@@ -26,7 +28,7 @@ public interface I${context.bizEnBigName}Service extends IService<${context.bizE
     /**
      * 修改${context.bizChName}
      */
-    void editItem(${context.entityName} ${context.bizEnName});
+    void editItem(${context.bizEnBigName} ${context.bizEnName});
 
     /**
      * 获取${context.bizChName}列表

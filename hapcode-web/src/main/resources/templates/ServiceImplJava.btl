@@ -1,13 +1,16 @@
-package ${service.serviceImplPackageName};
+package ${context.packageName};
 
-<% for(import in service.serviceImplImports!){ %>
-import ${import};
-<% } %>
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Map;
 
 /**
- * ${context.bizChName}控制器
+ * ${context.bizChName}服务实现类
  *
- * @author Longzhong
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
  @Service
