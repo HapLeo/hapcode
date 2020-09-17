@@ -27,15 +27,22 @@ public class FileUtil {
 
         File file = new File(filePath + fileName);
         if (!file.exists()) {
-            try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+
+            try {
 
                 file.createNewFile();
-                fileOutputStream.write(content.getBytes());
-                fileOutputStream.flush();
 
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println("创建文件失败！" + e.getMessage());
             }
+        }
+
+        try (FileOutputStream fileOutputStream = new FileOutputStream(file)) {
+
+            fileOutputStream.write(content.getBytes());
+            fileOutputStream.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
     }

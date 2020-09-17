@@ -38,8 +38,24 @@ public class BasicTemplateContext {
      */
     private String filePath;
 
+    /**
+     *
+     */
+    private String packageName;
+
+    /**
+     * 模块路径（业务模块，例如order）
+     */
+    private String bizModulePath;
+
+    /**
+     * model类的全限定名
+     */
+    private String modelClassName;
+
 
     public BasicTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+
         if (table == null || applicationConfig == null) {
             throw new NullPointerException();
         }
@@ -51,7 +67,11 @@ public class BasicTemplateContext {
         this.bizEnBigName = StringUtil.firstCharUp(this.bizEnName);
         this.author = applicationConfig.author;
         PackageConfig packageConfig = applicationConfig.getPackageConfig();
-        this.filePath = packageConfig.getModulePath() + packageConfig.getJavaPath() + packageConfig.getPackagePath();
+        this.filePath = packageConfig.getModulePath() + packageConfig.getJavaPath() + packageConfig.getPackagePath() + packageConfig.getBizModulePath();
+        this.packageName = packageConfig.getPackageName() + packageConfig.getBizModuleName();
+        this.bizModulePath = packageConfig.getBizModulePath();
+        this.modelClassName = packageName +".model."+ bizEnBigName;
+
     }
 
 }

@@ -16,19 +16,14 @@ import top.hapleow.hapcodecore.model.TableModel;
 public class ServiceImplJavaTemplateContext extends BasicTemplateContext {
 
 
-
-    /**
-     * 包名
-     */
-    private String packageName;
-
     private String subPackageName = "service/impl/";
 
 
     public ServiceImplJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+
         super(table, tablePrefix, applicationConfig);
-        this.packageName = applicationConfig.getPackageConfig().getPackageName() + "service.impl";
-        this.setFileName(super.getBizEnBigName() +"ServiceImpl.java");
+        this.setPackageName(super.getPackageName() + ".service.impl");
+        this.setFileName(super.getBizEnBigName() + "ServiceImpl.java");
         this.setFilePath(getFilePath() + subPackageName);
     }
 

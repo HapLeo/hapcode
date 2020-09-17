@@ -1,13 +1,9 @@
-package ${wrapper.packageName};
-
-<% for(import in wrapper.imports!){ %>
-import ${import};
-<% } %>
+package ${context.packageName};
 
 /**
  * ${context.bizChName}结果包装器
  *
- * @author Longzhong
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
 

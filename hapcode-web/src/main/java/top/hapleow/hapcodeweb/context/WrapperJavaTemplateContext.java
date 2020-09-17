@@ -8,22 +8,22 @@ import top.hapleow.hapcodecore.model.TableModel;
 import java.io.File;
 
 /**
- * DAO模板模型
- * 用于向模板传输数据
+ * 视图包装器模板容器
  *
  * @author wuyulin
  * @date 2020/9/15
  */
 @Data
-public class DaoJavaTemplateContext extends BasicTemplateContext {
+public class WrapperJavaTemplateContext extends BasicTemplateContext {
 
-    private String subPackageName = "dao" + File.separator;
 
-    public DaoJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+    private String subPackageName = "wrapper" + File.separator;
+
+    public WrapperJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
-        this.setFileName(super.getBizEnBigName() + "Mapper.java");
+        this.setFileName(super.getBizEnBigName() + "Wrapper.java");
         this.setFilePath(getFilePath() + subPackageName);
-        this.setPackageName(super.getPackageName() + ".dao");
+        this.setPackageName(super.getPackageName() + ".wrapper");
     }
 
 }

@@ -31,12 +31,22 @@ public class PackageConfig {
     /**
      * 包路径
      */
-    private String packagePath = "com/longzhong/lzms/modular/corporation/";
+    private String packagePath = "com/longzhong/lzms/modular/";
 
 
     /**
      * 包名(类全限定名的前半部分)
      */
-    private String packageName = "com.longzhong.lzms.modular.corporation.";
+    private String packageName = "com.longzhong.lzms.modular.";
+
+    /**
+     * 模块名（业务模块，例如order）
+     */
+    private String bizModuleName = "corporation";
+
+    /**
+     * 模块路径（业务模块，例如order）
+     */
+    private String bizModulePath = "corporation/";
 
 }

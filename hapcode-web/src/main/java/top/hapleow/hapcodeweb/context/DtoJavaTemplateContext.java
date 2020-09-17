@@ -17,10 +17,6 @@ import java.io.File;
 @Data
 public class DtoJavaTemplateContext extends BasicTemplateContext {
 
-    /**
-     * 包名
-     */
-    private String packageName;
 
     private String subPackageName = "dto" + File.separator;
 
@@ -28,7 +24,7 @@ public class DtoJavaTemplateContext extends BasicTemplateContext {
         super(table, tablePrefix, applicationConfig);
         this.setFileName(super.getBizEnBigName() + "Dto.java");
         this.setFilePath(getFilePath() + subPackageName);
-        this.setPackageName(applicationConfig.getPackageConfig().getPackageName() + "dto");
+        this.setPackageName(super.getPackageName() + "dto");
     }
 
 }

@@ -1,24 +1,32 @@
-package ${controller.packageName};
+package ${context.packageName};
 
 import com.baomidou.mybatisplus.core.metadata.OrderItem;
-<% for(import in controller.imports!){ %>
-import ${import};
-<% } %>
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * ${context.bizChName}控制器
  *
- * @author Longzhong
+ * @author ${context.author}
  * @Date ${tool.currentTime()}
  */
 @Controller
 @RequestMapping("/${context.bizEnName}")
 public class ${context.bizEnBigName}Controller extends BaseController {
 
-    private String PREFIX = "/${context.moduleName}/${context.bizEnName}/";
+    private String PREFIX = "/${context.bizModulePath}${context.bizEnName}/";
 
     @Autowired
-    private I${context.entityName}Service ${context.bizEnName}Service;
+    private I${context.bizEnBigName}Service ${context.bizEnName}Service;
 
 
     /**
@@ -52,7 +60,7 @@ public class ${context.bizEnBigName}Controller extends BaseController {
      */
     @RequestMapping(value = "/add")
     @ResponseBody
-    public Object add(${context.entityName} ${context.bizEnName}) {
+    public Object add(${context.bizEnBigName} ${context.bizEnName}) {
         ${context.bizEnName}Service.addItem(${context.bizEnName});
         return SUCCESS_TIP;
     }
@@ -72,7 +80,7 @@ public class ${context.bizEnBigName}Controller extends BaseController {
      */
     @RequestMapping(value = "/edit")
     @ResponseBody
-    public Object edit(${context.entityName} ${context.bizEnName}) {
+    public Object edit(${context.bizEnBigName} ${context.bizEnName}) {
         ${context.bizEnName}Service.editItem(${context.bizEnName});
         return SUCCESS_TIP;
     }

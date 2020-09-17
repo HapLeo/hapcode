@@ -19,11 +19,6 @@ import java.util.Objects;
 @Data
 public class ModelJavaTemplateContext extends BasicTemplateContext {
 
-    /**
-     * 包名
-     */
-    private String packageName;
-
     private String subPackageName = "model/";
 
     private List<String> imports = new ArrayList<>();
@@ -31,17 +26,17 @@ public class ModelJavaTemplateContext extends BasicTemplateContext {
 
     public ModelJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
-        this.packageName = applicationConfig.getPackageConfig().getPackageName() + "model";
-        this.setFileName(super.getBizEnBigName() +".java");
+        this.setPackageName(super.getPackageName() + ".model");
+        this.setFileName(super.getBizEnBigName() + ".java");
         this.setFilePath(getFilePath() + subPackageName);
 
 
         table.getFields().forEach(item -> {
             String javaType = item.getJavaType();
-            if (Objects.equals(javaType,"LocalDate")){
+            if (Objects.equals(javaType, "LocalDate")) {
                 imports.add("java.time.LocalDate");
             }
-            if (Objects.equals(javaType,"LocalDateTime")){
+            if (Objects.equals(javaType, "LocalDateTime")) {
                 imports.add("java.time.LocalDateTime");
             }
         });

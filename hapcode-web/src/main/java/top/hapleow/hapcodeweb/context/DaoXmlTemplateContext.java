@@ -22,15 +22,12 @@ public class DaoXmlTemplateContext extends BasicTemplateContext {
 
     private String namespace;
 
-    private String modelClassName;
-
 
     public DaoXmlTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
         this.setFileName(super.getBizEnBigName() + "Mapper.xml");
         this.setFilePath(getFilePath() + subPackageName);
-        this.namespace = applicationConfig.getPackageConfig().getPackageName() + "dao."+ super.getBizEnBigName() + "Mapper";
-        this.modelClassName = applicationConfig.getPackageConfig().getPackageName() + "model." + super.getBizEnBigName();
+        this.namespace = super.getPackageName() + ".dao."+ super.getBizEnBigName() + "Mapper";
     }
 
 }
