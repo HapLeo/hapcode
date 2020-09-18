@@ -128,7 +128,7 @@ window.operationEvents = {
                 }, function (data) {
                     Longzhong.error("删除失败!" + data.responseJSON.message + "!");
                 });
-                ajax.set(@{context.bizEnBigName}.idField,@{context.bizEnBigName}.seItem[@{context.bizEnBigName}.idField]);
+                ajax.set("id",@{context.bizEnBigName}.seItem[@{context.bizEnBigName}.idField]);
                 ajax.start();
         }
         Longzhong.confirm("确定删除该记录吗？",operation);
