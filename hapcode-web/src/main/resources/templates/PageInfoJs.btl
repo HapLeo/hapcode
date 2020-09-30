@@ -92,7 +92,10 @@ var @{context.bizEnBigName}InfoDlg = {
  * 初始化页面
  */
 @{context.bizEnBigName}InfoDlg.init = function() {
-    laydate.render({elem:'.laydate'});
+
+        $.each($('.laydate'), function (n, item) {
+            laydate.render({elem: '#' + $(item).attr('id')});
+        });
 }
 
 
