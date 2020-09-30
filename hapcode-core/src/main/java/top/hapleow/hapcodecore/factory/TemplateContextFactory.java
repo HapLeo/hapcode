@@ -10,6 +10,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 模板上下文工厂
@@ -32,7 +33,12 @@ public class TemplateContextFactory {
                 File[] files = file.listFiles();
                 for (File file1 : files) {
                     String name = file1.getName();
-                    String preName = name.split("\\.")[0];
+                    String[] split = name.split("\\.");
+                    String preName = split[0];
+                    String postName = split[split.length - 1];
+                    if (Objects.equals(postName, "bak")) {
+                        continue;
+                    }
                     try {
                         Class aClass = Class.forName("top.hapleow.hapcodeweb.context." + preName + "TemplateContext");
                         registTemplate(name, aClass);
