@@ -3,7 +3,10 @@
     <div class="ibox-content">
         <div class="form-horizontal">
          <% for(item in context.table.fields!){ %>
-              <% if(item.key != "PRI"){ %>
+         <% if(item.javaType == "Integer"){ %>
+            <input id="@{item.propertyName}"  type="hidden"/>
+         <% } %>
+         <% else{ %>
               <div class="row form-group">
                 <div class="col-sm-2">
                     <% if(item.comment == null){ %>
@@ -13,7 +16,15 @@
                     <% } %>
                 </div>
                 <div class="col-sm-4">
+                <% if(item.javaType == "LocalDateTime"){ %>
+                  <input id="@{item.propertyName}"  type="text" class="form-control laydate" />
+
+                <% }else if(item.javaType == "LocalDate"){ %>
+                  <input id="@{item.propertyName}"  type="text" class="form-control laydate" />
+                <% } %>
+                <% else{%>
                   <input id="@{item.propertyName}"  type="text" class="form-control" />
+                  <% }%>
                 </div>
               </div>
          <% }%>
