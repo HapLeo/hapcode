@@ -19,5 +19,5 @@ public interface @{context.bizEnBigName}Mapper extends BaseMapper<@{context.bizE
     /**
      * 获取@{context.bizChName}列表
      */
-    List<Map<String,Object>> selectListByPage(@Param("page") Page<@{context.bizEnBigName}> page,@Param("dto") @{context.bizEnBigName}Dto dto);
+    List<@{context.bizEnBigName}Vo> selectListByPage(@Param("page") Page<@{context.bizEnBigName}Vo> page,@Param("dto") @{context.bizEnBigName}Dto dto);
 }

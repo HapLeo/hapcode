@@ -16,7 +16,7 @@ public class PackageConfig {
     /**
      * 模块根路径
      */
-    private String modulePath = "C:\\ideaSpace\\lzms\\lzms-admin\\";
+    private String modulePath = "C:\\ideaSpace\\lzcs\\lzcs-admin\\";
 
     /**
      * java包路径
@@ -41,22 +41,22 @@ public class PackageConfig {
     /**
      * 包路径
      */
-    private String packagePath = "com/longzhong/lzms/modular/";
+    private String packagePath = "com/longzhong/lzcs/modular/";
 
 
     /**
      * 包名(类全限定名的前半部分)
      */
-    private String packageName = "com.longzhong.lzms.modular.";
+    private String packageName = "com.longzhong.lzcs.modular.";
 
     /**
      * 模块名（业务模块，例如order）
      */
-    private String bizModuleName = "corporation";
+    private String bizModuleName = "finance";
 
     /**
      * 模块路径（业务模块，例如order）
      */
-    private String bizModulePath = "corporation/";
+    private String bizModulePath = "finance/";
 
 }

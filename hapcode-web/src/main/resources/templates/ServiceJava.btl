@@ -34,5 +34,5 @@ public interface I@{context.bizEnBigName}Service extends IService<@{context.bizE
     /**
      * 获取@{context.bizChName}列表
      */
-    List<Map<String,Object>> selectListByPage(Page<@{context.bizEnBigName}> page,@{context.bizEnBigName}Dto dto);
+    List<@{context.bizEnBigName}Vo> selectListByPage(Page<@{context.bizEnBigName}Vo> page,@{context.bizEnBigName}Dto dto);
 }

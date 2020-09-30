@@ -25,7 +25,7 @@
     <% } %>
     </sql>
 
-    <select id="selectListByPage" resultType="java.util.Map">
+    <select id="selectListByPage" resultType="@{context.voClassName}">
         select
         <include refid="Base_Column_List"/>
         from @{context.table.name!}

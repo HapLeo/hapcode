@@ -21,7 +21,7 @@ public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bi
     /**
      * 获取@{context.bizChName}列表
      */
-    public List<Map<String,Object>> selectListByPage(Page<@{context.bizEnBigName}> page,@{context.bizEnBigName}Dto dto) {
+    public List<@{context.bizEnBigName}Vo> selectListByPage(Page<@{context.bizEnBigName}Vo> page,@{context.bizEnBigName}Dto dto) {
 
         return baseMapper.selectListByPage(page,dto);
     }

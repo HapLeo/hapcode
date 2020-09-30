@@ -93,14 +93,11 @@ public class @{context.bizEnBigName}Controller extends BaseController {
     @ResponseBody
     public Object list(@{context.bizEnBigName}Dto dto) {
 
-        Page<@{context.bizEnBigName}> page = PageFactory.defaultPage();
+        Page<@{context.bizEnBigName}Vo> page = PageFactory.defaultPage();
         if (page.getOrders().size() == 0) {
             page.setOrders(OrderItem.descs(@{context.bizEnBigName}.PRIMARY_KEY_COLUMN));
         }
-        List<Map<String, Object>> result = @{context.bizEnName}Service.selectListByPage(page, dto);
-        List<@{context.bizEnBigName}> wrap = (List<@{context.bizEnBigName}>) new @{context.bizEnBigName}Wrapper(result).wrap();
-        page.setRecords(wrap);
-
+        page.setRecords(@{context.bizEnName}Service.selectListByPage(page, dto));
         return super.packForAPP(page);
     }
 

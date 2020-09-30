@@ -15,16 +15,16 @@ import java.io.File;
  * @date 2020/9/15
  */
 @Data
-public class DtoJavaTemplateContext extends BasicTemplateContext {
+public class VoJavaTemplateContext extends BasicTemplateContext {
 
 
-    private String subPackageName = "dto" + File.separator;
+    private String subPackageName = "vo" + File.separator;
 
-    public DtoJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
+    public VoJavaTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
         super(table, tablePrefix, applicationConfig);
-        this.setFileName(super.getBizEnBigName() + "Dto.java");
+        this.setFileName(super.getBizEnBigName() + "Vo.java");
         this.setFilePath(getFilePath() + subPackageName);
-        this.setPackageName(super.getPackageName() + ".dto");
+        this.setPackageName(super.getPackageName() + ".vo");
     }
 
 }
