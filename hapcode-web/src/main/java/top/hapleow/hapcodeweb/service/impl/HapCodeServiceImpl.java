@@ -29,9 +29,10 @@ public class HapCodeServiceImpl implements IHapCodeService {
 
 
     @Override
-    public void coding(String tableName, String templateKey) {
+    public void coding(String tableName, String templateKey, String bizModuleName) {
 
         ApplicationConfig applicationConfig = new ApplicationConfig();
+        applicationConfig.getPackageConfig().setBizModuleName(bizModuleName);
 
         if (tableName == null || "".equals(tableName)) {
             throw new NullPointerException("表名为空");
@@ -47,12 +48,13 @@ public class HapCodeServiceImpl implements IHapCodeService {
     }
 
     @Override
-    public void codingAll(String tableName) {
+    public void codingAll(String tableName, String bizModuleName) {
+
         TemplateContextFactory.autoRegistTemplate();
         Set<String> keySet = TemplateContextFactory.templateMap.keySet();
         Iterator<String> iterator = keySet.iterator();
         while (iterator.hasNext()) {
-            coding(tableName, iterator.next());
+            coding(tableName, iterator.next(),bizModuleName);
         }
     }
 }

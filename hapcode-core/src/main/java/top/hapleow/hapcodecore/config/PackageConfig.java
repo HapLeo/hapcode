@@ -59,4 +59,10 @@ public class PackageConfig {
      */
     private String bizModulePath = "finance/";
 
+
+    public void setBizModuleName(String bizModuleName){
+        this.bizModuleName = bizModuleName;
+        this.bizModulePath = bizModuleName + "/";
+    }
+
 }

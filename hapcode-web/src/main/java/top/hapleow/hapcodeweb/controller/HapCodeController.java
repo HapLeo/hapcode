@@ -21,17 +21,19 @@ public class HapCodeController {
 
     @RequestMapping("/coding")
     @ResponseBody
-    public String coding(@RequestParam("tableName") String tableName, @RequestParam("templateKey") String templateKey) {
+    public String coding(@RequestParam("tableName") String tableName,
+                         @RequestParam("templateKey") String templateKey,
+                         @RequestParam("bizModuleName") String bizModuleName) {
 
-        hapCodeService.coding(tableName,templateKey);
+        hapCodeService.coding(tableName, templateKey, bizModuleName);
         return "SUCCESS";
     }
 
     @RequestMapping("/codingAll")
     @ResponseBody
-    public String codingAll(@RequestParam("tableName") String tableName) {
+    public String codingAll(@RequestParam("tableName") String tableName, @RequestParam("bizModuleName") String bizModuleName) {
 
-        hapCodeService.codingAll(tableName);
+        hapCodeService.codingAll(tableName, bizModuleName);
         return "SUCCESS";
     }
 }
