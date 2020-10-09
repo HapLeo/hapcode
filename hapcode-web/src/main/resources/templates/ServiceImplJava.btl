@@ -33,6 +33,8 @@ public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bi
      */
     @Override
     public void addItem(@{context.bizEnBigName} @{context.bizEnName}) {
+
+        validBeforeAdd(@{context.bizEnName});
         baseMapper.insert(@{context.bizEnName});
     }
 
@@ -53,6 +55,37 @@ public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bi
      */
     @Override
     public void editItem(@{context.bizEnBigName} @{context.bizEnName}) {
+
+        validBeforeEdit(@{context.bizEnName});
         baseMapper.updateById(@{context.bizEnName});
     }
+
+        /**
+         * 新增之前验证
+         *
+         * @param @{context.bizEnName}
+         */
+        private void validBeforeAdd(@{context.bizEnBigName} @{context.bizEnName}) {
+
+            validBefore(@{context.bizEnName});
+        }
+
+        /**
+         * 修改之前验证
+         *
+         * @param @{context.bizEnName}
+         */
+        private void validBeforeEdit(@{context.bizEnBigName} @{context.bizEnName}) {
+
+            validBefore(@{context.bizEnName});
+        }
+
+        /**
+         * 新增、修改之前的通用验证
+         *
+         * @param @{context.bizEnName}
+         */
+        private void validBefore(@{context.bizEnBigName} @{context.bizEnName}) {
+            // TODO 做一些必要的验证
+        }
 }
