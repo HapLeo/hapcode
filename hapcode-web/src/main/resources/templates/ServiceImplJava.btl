@@ -23,7 +23,9 @@ public class @{context.bizEnBigName}ServiceImpl extends ServiceImpl<@{context.bi
      */
     public List<@{context.bizEnBigName}Vo> selectListByPage(Page<@{context.bizEnBigName}Vo> page,@{context.bizEnBigName}Dto dto) {
 
-        return baseMapper.selectListByPage(page,dto);
+        List<@{context.bizEnBigName}Vo> list = baseMapper.selectListByPage(page, dto);
+        list.forEach(AbstractVo::wrap);
+        return list;
     }
 
     /**

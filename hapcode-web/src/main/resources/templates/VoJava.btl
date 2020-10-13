@@ -9,7 +9,7 @@ import lombok.Data;
  * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
 @Data
-public class @{context.bizEnBigName}Vo {
+public class @{context.bizEnBigName}Vo extends AbstractVo{
 
 <% for(item in context.table.fields!){ %>
 
@@ -18,5 +18,13 @@ public class @{context.bizEnBigName}Vo {
      */
     private @{item.javaType} @{item.propertyName};
 <% } %>
+
+    /**
+     * 包装当前对象
+     */
+    @Override
+    public void wrap() {
+
+    }
 
 }
