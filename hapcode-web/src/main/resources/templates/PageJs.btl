@@ -149,6 +149,10 @@ window.operationEvents = {
  */
 @{context.bizEnBigName}.init = function() {
 
+    $.each($('.laydate'), function (n, item) {
+        laydate.render({elem: '#' + $(item).attr('id')});
+    });
+
     // 初始化列表数据
     var defaultColunms = @{context.bizEnBigName}.initColumn();
     var table = new BSTable(@{context.bizEnBigName}.id, "/@{context.bizEnName}/list", defaultColunms);
