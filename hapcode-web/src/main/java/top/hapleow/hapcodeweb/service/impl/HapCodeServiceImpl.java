@@ -10,7 +10,6 @@ import top.hapleow.hapcodeweb.dto.CodingDto;
 import top.hapleow.hapcodeweb.service.IHapCodeService;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
-import java.util.Iterator;
 import java.util.Set;
 
 /**
@@ -58,8 +57,8 @@ public class HapCodeServiceImpl implements IHapCodeService {
 
         TemplateContextFactory.autoRegistTemplate();
         Set<String> keySet = TemplateContextFactory.templateMap.keySet();
-        Iterator<String> iterator = keySet.iterator();
-        while (iterator.hasNext()) {
+        for (String s : keySet) {
+            codingDto.setTemplateKey(s);
             coding(codingDto);
         }
     }
