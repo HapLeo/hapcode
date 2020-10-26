@@ -67,9 +67,15 @@
                 <div class="ibox-content">
                     <form id="form" role="form" class="form-horizontal m-t">
                         <div class="form-group draggable">
+                            <label class="col-sm-3 control-label">作者：</label>
+                            <div class="col-sm-9">
+                                <input type="text" id="author" class="form-control" value="wuyulin">
+                            </div>
+                        </div>
+                        <div class="form-group draggable">
                             <label class="col-sm-3 control-label">表名称：</label>
                             <div class="col-sm-9">
-                                <input type="text" id="tableName" class="form-control" value="lzc_bank_draft">
+                                <input type="text" id="tableName" class="form-control" value="lzc_user">
                             </div>
                         </div>
                         <div class="form-group draggable">
@@ -125,7 +131,6 @@
 <script src="js/bootstrap.min.js?v=3.3.6"></script>
 
 
-
 <!-- jQuery UI -->
 <script src="js/jquery-ui-1.10.4.min.js"></script>
 
@@ -140,8 +145,7 @@
         $('#submit').click(function () {
             var tableName = $('#tableName').val();
             var bizModuleName = $('#bizModuleName').val();
-            console.log(tableName)
-            console.log(bizModuleName)
+            var author = $('#author').val();
             if (tableName == 'undefined' || tableName == '') {
                 alert("表名称不能为空！");
                 return;
@@ -151,11 +155,12 @@
                 return;
             }
             $.ajax({
-                url: Const.ctx + '/hapcode/codingAll',
-                method:'post',
+                url: '/hapcode/codingAll',
+                method: 'post',
                 data: {
                     'tableName': tableName,
-                    'bizModuleName': bizModuleName
+                    'bizModuleName': bizModuleName,
+                    'author': author,
                 },
                 success: function () {
                     alert("执行成功！");

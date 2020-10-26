@@ -6,6 +6,7 @@ import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.factory.TemplateContextFactory;
 import top.hapleow.hapcodecore.generator.IGenerator;
 import top.hapleow.hapcodecore.model.TableModel;
+import top.hapleow.hapcodeweb.dto.CodingDto;
 import top.hapleow.hapcodeweb.service.IHapCodeService;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
@@ -29,9 +30,14 @@ public class HapCodeServiceImpl implements IHapCodeService {
 
 
     @Override
-    public void coding(String tableName, String templateKey, String bizModuleName) {
+    public void coding(CodingDto codingDto) {
+
+        String bizModuleName = codingDto.getBizModuleName();
+        String tableName = codingDto.getTableName();
+        String templateKey = codingDto.getTemplateKey();
 
         ApplicationConfig applicationConfig = new ApplicationConfig();
+        applicationConfig.setAuthor(codingDto.getAuthor());
         applicationConfig.getPackageConfig().setBizModuleName(bizModuleName);
 
         if (tableName == null || "".equals(tableName)) {
@@ -48,13 +54,13 @@ public class HapCodeServiceImpl implements IHapCodeService {
     }
 
     @Override
-    public void codingAll(String tableName, String bizModuleName) {
+    public void codingAll(CodingDto codingDto) {
 
         TemplateContextFactory.autoRegistTemplate();
         Set<String> keySet = TemplateContextFactory.templateMap.keySet();
         Iterator<String> iterator = keySet.iterator();
         while (iterator.hasNext()) {
-            coding(tableName, iterator.next(),bizModuleName);
+            coding(codingDto);
         }
     }
 }

@@ -1,5 +1,7 @@
 package top.hapleow.hapcodeweb.service;
 
+import top.hapleow.hapcodeweb.dto.CodingDto;
+
 /**
  * 生成器服务类
  *
@@ -9,7 +11,7 @@ package top.hapleow.hapcodeweb.service;
 public interface IHapCodeService {
 
 
-    void coding(String tableName, String templateKey, String mudule);
+    void coding(CodingDto codingDto);
 
-    void codingAll(String tableName, String mudule);
+    void codingAll(CodingDto codingDto);
 }
