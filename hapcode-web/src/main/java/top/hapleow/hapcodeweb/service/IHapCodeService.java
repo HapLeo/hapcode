@@ -1,5 +1,6 @@
 package top.hapleow.hapcodeweb.service;
 
+import top.hapleow.hapcodeweb.dto.CodingApiDto;
 import top.hapleow.hapcodeweb.dto.CodingDto;
 
 /**
@@ -14,4 +15,6 @@ public interface IHapCodeService {
     void coding(CodingDto codingDto);
 
     void codingAll(CodingDto codingDto);
+
+    void codingApi(CodingApiDto codingApiDto);
 }

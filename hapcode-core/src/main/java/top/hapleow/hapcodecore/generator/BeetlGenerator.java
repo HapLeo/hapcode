@@ -33,6 +33,18 @@ public class BeetlGenerator implements IGenerator {
 
         BasicTemplateContext templateContext = TemplateContextFactory.getTemplateContext(templateName, tableModel, "lzc_", applicationConfig);
 
+        writeToFile(templateName,templateContext);
+    }
+
+
+    /**
+     * 将内容写入文件中
+     * @param templateName
+     * @param templateContext
+     */
+    @Override
+    public void writeToFile(String templateName, BasicTemplateContext templateContext) {
+
         //初始化代码
         ClasspathResourceLoader resourceLoader = new ClasspathResourceLoader();
 

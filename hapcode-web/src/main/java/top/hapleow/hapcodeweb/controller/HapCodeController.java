@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import top.hapleow.hapcodeweb.dto.CodingApiDto;
 import top.hapleow.hapcodeweb.dto.CodingDto;
 import top.hapleow.hapcodeweb.service.IHapCodeService;
 
@@ -33,6 +34,13 @@ public class HapCodeController {
     public String codingAll(CodingDto codingDto) {
 
         hapCodeService.codingAll(codingDto);
+        return "SUCCESS";
+    }
+
+    @RequestMapping("/codingApi")
+    @ResponseBody
+    public String codingApi(CodingApiDto codingApiDto){
+        hapCodeService.codingApi(codingApiDto);
         return "SUCCESS";
     }
 }

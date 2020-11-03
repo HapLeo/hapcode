@@ -1,0 +1,10 @@
+
+
+**全量字段参考表**
+
+
+|参数名|类型|说明|
+|:----|:----- |-----   |
+<% for(item in context.fieldList!){ %>
+| @{item.propertyName} | @{item.javaType} | @{item.comment} |
+<% } %>

@@ -7,4 +7,7 @@ package top.hapleow.hapcodecore.common;
 public class Const {
 
     public static String tempatePath = "templates/";
+
+    public static String APITemplateKey = "API.md.btl";
+
 }

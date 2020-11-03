@@ -54,6 +54,10 @@ public class BasicTemplateContext {
     private String modelClassName;
 
 
+
+    public BasicTemplateContext() {
+    }
+
     public BasicTemplateContext(TableModel table, String tablePrefix, ApplicationConfig applicationConfig) {
 
         if (table == null || applicationConfig == null) {
