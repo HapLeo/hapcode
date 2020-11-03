@@ -4,13 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.hapleow.hapcodecore.common.Cache;
 import top.hapleow.hapcodecore.common.Const;
-import top.hapleow.hapcodecore.common.FileUtil;
 import top.hapleow.hapcodecore.config.ApplicationConfig;
 import top.hapleow.hapcodecore.factory.TemplateContextFactory;
 import top.hapleow.hapcodecore.generator.IGenerator;
 import top.hapleow.hapcodecore.model.FieldModel;
-import top.hapleow.hapcodecore.model.TableField;
-import top.hapleow.hapcodecore.model.TableInfo;
 import top.hapleow.hapcodecore.model.TableModel;
 import top.hapleow.hapcodeweb.context.APIMdTemplateContext;
 import top.hapleow.hapcodeweb.dto.CodingApiDto;
@@ -20,7 +17,7 @@ import top.hapleow.hapcodeweb.service.ITableInfoService;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.Set;
 
 /**
  * 代码生成服务实现类
@@ -79,6 +76,9 @@ public class HapCodeServiceImpl implements IHapCodeService {
         if (codingApiDto.getTableNames() == null){
             throw new IllegalArgumentException("表名列表不能为空");
         }
+        if (codingApiDto.getDesc() == null){
+            throw new IllegalArgumentException("接口描述不能为空");
+        }
 
         if (codingApiDto.getDestPath() == null){
             String filePath = null;
@@ -108,6 +108,7 @@ public class HapCodeServiceImpl implements IHapCodeService {
         APIMdTemplateContext templateContext = new APIMdTemplateContext();
         templateContext.setFileName(fileName);
         templateContext.setFilePath(filePath);
+        templateContext.setDto(codingApiDto);
         doCodingApi(Const.APITemplateKey, templateContext);
 
     }

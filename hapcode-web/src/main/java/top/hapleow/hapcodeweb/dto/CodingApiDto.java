@@ -22,4 +22,9 @@ public class CodingApiDto {
      */
     private List<String> tableNames;
 
+    /**
+     * 接口描述
+     */
+    private String desc;
+
 }

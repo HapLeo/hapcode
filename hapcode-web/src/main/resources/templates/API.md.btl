@@ -1,5 +1,47 @@
 
 
+**简要描述：**
+
+- @{dto.desc}
+
+**请求URL：**
+- `/vatInvoice/list`
+
+**参数：**
+
+|参数名|必选|类型|说明|
+|:----    |:---|:----- |-----   |
+|orderId |是  |int |订单编号   |
+|vatFromPark |否  |int | 园区开票(0-否 1-是)    |
+|vatAudit |否  |int | 审核状态    |
+|sellerName |否  |string | 卖家名称    |
+|purchaserName |否  |string | 买家名称 |
+|vatApplyId |否  |int | 发票申请ID    |
+
+ **返回示例**
+
+```
+{
+		"code": 200,
+		"data": {
+			"current": "1",
+			"hitCount": false,
+			"optimizeCountSql": true,
+			"orders": [{
+				"asc": false,
+				"column": "vat_id"
+			}],
+			"pages": "0",
+			"records": [],
+			"searchCount": true,
+			"size": "10",
+			"total": "0"
+		},
+		"message": "请求成功",
+		"success": true
+	}
+```
+
 **全量字段参考表**
 
 
