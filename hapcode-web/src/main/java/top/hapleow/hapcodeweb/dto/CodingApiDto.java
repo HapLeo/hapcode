@@ -27,4 +27,9 @@ public class CodingApiDto {
      */
     private String desc;
 
+    /**
+     * 请求url
+     */
+    private String url;
+
 }

@@ -5,7 +5,7 @@
 - @{dto.desc}
 
 **请求URL：**
-- `/vatInvoice/list`
+- `@{dto.url}`
 
 **参数：**
 
