@@ -98,33 +98,50 @@
         <div class="col-sm-7">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>拖拽左侧表单元素到此区域</h5>
-                    <div class="ibox-tools">
-                        请选择显示的列数：
-                        <select id="n-columns">
-                            <option value="1">显示1列</option>
-                            <option value="2">显示2列</option>
-                        </select>
-                    </div>
+                    <h5>API生成器</h5>
                 </div>
-
                 <div class="ibox-content">
                     <div class="row form-body form-horizontal m-t">
                         <div class="col-md-12 droppable sortable">
-                        </div>
-                        <div class="col-md-6 droppable sortable" style="display: none;">
-                        </div>
-                        <div class="col-md-6 droppable sortable" style="display: none;">
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">表名称列表（逗号隔开）：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="tableNames" class="form-control"
+                                           value="lzc_bank_draft,lzc_bank_endorese">
+                                </div>
+                            </div>
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">目标路径：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="destPath" class="form-control" value="D:\\API.md">
+                                </div>
+                            </div>
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">接口描述：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="desc" class="form-control" value="承兑汇票列表接口">
+                                </div>
+                            </div>
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">请求URL：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="url" class="form-control" value="/bankDraft/list">
+                                </div>
+                            </div>
+                            <div class="form-group draggable">
+                                <div class="col-sm-12 col-sm-offset-3">
+                                    <button class="btn btn-primary" id="submitApiBtn">提交</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-warning" data-clipboard-text="testing" id="copy-to-clipboard">
-                        复制代码
-                    </button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+</body>
+
 
 <!-- 全局js -->
 <script src="js/jquery.min.js?v=2.1.4"></script>
@@ -139,40 +156,6 @@
 <!-- From Builder -->
 <script src="js/plugins/beautifyhtml/beautifyhtml.js"></script>
 
-<script>
-    $(document).ready(function () {
-
-        $('#submit').click(function () {
-            var tableName = $('#tableName').val();
-            var bizModuleName = $('#bizModuleName').val();
-            var author = $('#author').val();
-            if (tableName == 'undefined' || tableName == '') {
-                alert("表名称不能为空！");
-                return;
-            }
-            if (bizModuleName == 'undefined' || bizModuleName == '') {
-                alert("模块名称不能为空！");
-                return;
-            }
-            $.ajax({
-                url: '/hapcode/codingAll',
-                method: 'post',
-                data: {
-                    'tableName': tableName,
-                    'bizModuleName': bizModuleName,
-                    'author': author,
-                },
-                success: function () {
-                    alert("执行成功！");
-                },
-                error: function (result) {
-                    alert(result);
-                }
-            });
-        });
-    });
-
-</script>
-</body>
+<script src="js/module/code_generator.js"></script>
 
 </html>
