@@ -4,46 +4,29 @@
 
 - @{context.dto.desc!}
 
-**请求URL：**
+
+
+
+**请求地址：**
 - `@{context.dto.url!}`
 
-**参数：**
+
+
+
+**入参列表：**
+
 
 |参数名|必选|类型|说明|
-|:----    |:---|:----- |-----   |
-|orderId |是  |int |订单编号   |
-|vatFromPark |否  |int | 园区开票(0-否 1-是)    |
-|vatAudit |否  |int | 审核状态    |
-|sellerName |否  |string | 卖家名称    |
-|purchaserName |否  |string | 买家名称 |
-|vatApplyId |否  |int | 发票申请ID    |
+|:----|:---|:----- |-----   |
+<% for(item in context.dtoFieldList!){ %>
+| @{item.propertyName} |否| @{item.javaType} | @{item.comment} |
+<% } %>
 
- **返回示例**
 
-```
-{
-		"code": 200,
-		"data": {
-			"current": "1",
-			"hitCount": false,
-			"optimizeCountSql": true,
-			"orders": [{
-				"asc": false,
-				"column": "vat_id"
-			}],
-			"pages": "0",
-			"records": [],
-			"searchCount": true,
-			"size": "10",
-			"total": "0"
-		},
-		"message": "请求成功",
-		"success": true
-	}
-```
 
-**全量字段参考表**
+**返回字段参考表**
 
+> 说明：如下列表用于查找返回字段的中文释义，部分字段接口并不返回，具体返回的字段请依据接口获取。
 
 |参数名|类型|说明|
 |:----|:----- |-----   |

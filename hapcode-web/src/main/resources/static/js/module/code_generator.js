@@ -41,6 +41,7 @@ CodeGenerator.genApiFile = function () {
         var destPath = $('#destPath').val();
         var desc = $('#desc').val();
         var url = $('#url').val();
+        var dtoAbPath = $('#dtoAbPath').val();
 
         $.ajax({
             url: '/hapcode/codingApi',
@@ -49,10 +50,11 @@ CodeGenerator.genApiFile = function () {
                 'tableNames': tableNames,
                 'destPath': destPath,
                 'desc': desc,
-                'url': url
+                'url': url,
+                'dtoAbPath': dtoAbPath
             },
             success: function () {
-                alert("执行成功！");
+                console.log("执行成功！");
             },
             error: function (result) {
                 alert(result);

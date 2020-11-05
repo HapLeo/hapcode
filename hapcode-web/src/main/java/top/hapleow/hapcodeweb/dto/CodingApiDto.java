@@ -32,4 +32,9 @@ public class CodingApiDto {
      */
     private String url;
 
+    /**
+     * DTO绝对路径
+     */
+    private String dtoAbPath;
+
 }

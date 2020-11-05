@@ -15,9 +15,8 @@ import top.hapleow.hapcodeweb.dto.CodingDto;
 import top.hapleow.hapcodeweb.service.IHapCodeService;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Set;
+import java.io.*;
+import java.util.*;
 
 /**
  * 代码生成服务实现类
@@ -73,14 +72,14 @@ public class HapCodeServiceImpl implements IHapCodeService {
     @Override
     public void codingApi(CodingApiDto codingApiDto) {
 
-        if (codingApiDto.getTableNames() == null){
+        if (codingApiDto.getTableNames() == null) {
             throw new IllegalArgumentException("表名列表不能为空");
         }
-        if (codingApiDto.getDesc() == null){
+        if (codingApiDto.getDesc() == null) {
             throw new IllegalArgumentException("接口描述不能为空");
         }
 
-        if (codingApiDto.getDestPath() == null){
+        if (codingApiDto.getDestPath() == null) {
             String filePath = null;
             try {
                 filePath = File.createTempFile(codingApiDto.getTableNames().get(0), ".md").getAbsolutePath();
@@ -102,21 +101,64 @@ public class HapCodeServiceImpl implements IHapCodeService {
             }
         }
 
-        String destPath = codingApiDto.getDestPath();
-        String fileName = destPath.substring(destPath.lastIndexOf(File.separator)+1);
-        String filePath = destPath.substring(0, destPath.lastIndexOf(File.separator));
+        // 将DTO注入到上下文
         APIMdTemplateContext templateContext = new APIMdTemplateContext();
+        templateContext.setDto(codingApiDto);
+
+        // 处理文件名和地址
+        String destPath = codingApiDto.getDestPath();
+        String fileName = destPath.substring(destPath.lastIndexOf(File.separator) + 1);
+        String filePath = destPath.substring(0, destPath.lastIndexOf(File.separator));
         templateContext.setFileName(fileName);
         templateContext.setFilePath(filePath);
-        templateContext.setDto(codingApiDto);
-        doCodingApi(Const.APITemplateKey, templateContext);
+
+        // 获取DTO中的内容
+        String dtoAbPath = codingApiDto.getDtoAbPath();
+
+        templateContext.setDtoFieldList(getDtoFieldList(dtoAbPath));
+
+
+        generator.writeToFile(Const.APITemplateKey, templateContext);
 
     }
 
-    private void doCodingApi(String templateName, APIMdTemplateContext templateContext) {
+    private List<Map<String, String>> getDtoFieldList(String dtoAbPath) {
 
-        // 生成表结构字段对照表
-        generator.writeToFile(templateName, templateContext);
+        List<Map<String, String>> fieldList = new ArrayList<>();
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(dtoAbPath));
+            Map<String, String> currentField = null;
+            while (true) {
+                String line = bufferedReader.readLine();
+                if (line == null) {
+                    break;
+                }
+                if ("".equals(line)) {
+                    continue;
+                }
+                int index;
+                if ((index = line.indexOf("@desc")) != -1) {
+                    currentField = new HashMap<>();
+                    fieldList.add(currentField);
+                    currentField.put("comment", line.substring(index + 5).trim());
+                } else if ((index = line.indexOf("private")) != -1) {
 
+                    if (currentField == null) continue;
+
+                    List<String> list = Arrays.asList(line.substring(index).trim().split(" "));
+                    list.removeIf(""::equals);
+                    Object[] lineItems = list.toArray();
+                    currentField.put("javaType", (String) lineItems[1]);
+                    currentField.put("propertyName", ((String) lineItems[2]).replace(";",""));
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return fieldList;
     }
+
 }
