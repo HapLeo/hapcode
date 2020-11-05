@@ -31,6 +31,11 @@ public class APIMdTemplateContext extends BasicTemplateContext {
     private List<Map<String, String>> dtoFieldList;
 
     /**
+     * 接口返回值
+     */
+    private String responseStr;
+
+    /**
      * 表字段列表
      */
     private Collection<FieldModel> fieldList = Cache.FIELD_MODEL_MAP_CACHE.values();
