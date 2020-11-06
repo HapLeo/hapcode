@@ -37,6 +37,10 @@ public class CodingApiDto {
      */
     private String dtoAbPath;
 
+    /**
+     * 接口返回相应字符串
+     */
+    private String responseStr;
 
 
 }

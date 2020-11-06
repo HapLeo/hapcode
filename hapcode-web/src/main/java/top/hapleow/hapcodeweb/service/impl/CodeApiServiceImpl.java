@@ -2,7 +2,6 @@ package top.hapleow.hapcodeweb.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import top.hapleow.hapcodecore.common.Cache;
 import top.hapleow.hapcodecore.common.Const;
 import top.hapleow.hapcodecore.generator.IGenerator;
@@ -31,9 +30,6 @@ public class CodeApiServiceImpl implements ICodeApiService {
 
     @Autowired
     private IGenerator generator;
-
-    @Autowired
-    private RestTemplate restTemplate;
 
 
     @Override
@@ -84,23 +80,12 @@ public class CodeApiServiceImpl implements ICodeApiService {
         templateContext.setDtoFieldList(getDtoFieldList(dtoAbPath));
 
         // 获取接口的返回值
-        templateContext.setResponseStr(getResponseStr());
-
+        templateContext.setResponseStr(codingApiDto.getResponseStr());
 
         generator.writeToFile(Const.APITemplateKey, templateContext);
 
     }
 
-    /**
-     * 获取接口返回值
-     * @return
-     */
-    private String getResponseStr() {
-
-        String responseStr = restTemplate.getForObject("http://localhost:8081/customersContract/list", String.class);
-        System.out.println(responseStr);
-        return responseStr;
-    }
 
     private List<Map<String, String>> getDtoFieldList(String dtoAbPath) {
 
