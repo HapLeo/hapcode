@@ -105,6 +105,10 @@ public class CodeApiServiceImpl implements ICodeApiService {
     private List<Map<String, String>> getDtoFieldList(String dtoAbPath) {
 
         List<Map<String, String>> fieldList = new ArrayList<>();
+
+        if (dtoAbPath == null || "".equals(dtoAbPath)){
+            return fieldList;
+        }
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(dtoAbPath));
             Map<String, String> currentField = null;
