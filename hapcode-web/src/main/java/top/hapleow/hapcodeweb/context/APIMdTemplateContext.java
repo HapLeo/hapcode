@@ -6,6 +6,7 @@ import top.hapleow.hapcodecore.context.BasicTemplateContext;
 import top.hapleow.hapcodecore.model.FieldModel;
 import top.hapleow.hapcodeweb.dto.CodingApiDto;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +35,11 @@ public class APIMdTemplateContext extends BasicTemplateContext {
      * 接口返回值
      */
     private String responseStr;
+
+    /**
+     * 接口返回字段列表
+     */
+    private Collection<FieldModel> responseList = new ArrayList<>();
 
     /**
      * 表字段列表

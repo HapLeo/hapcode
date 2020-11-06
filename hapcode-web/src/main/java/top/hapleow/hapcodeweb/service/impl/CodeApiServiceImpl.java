@@ -1,5 +1,8 @@
 package top.hapleow.hapcodeweb.service.impl;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.hapleow.hapcodecore.common.Cache;
@@ -82,8 +85,61 @@ public class CodeApiServiceImpl implements ICodeApiService {
         // 获取接口的返回值
         templateContext.setResponseStr(codingApiDto.getResponseStr());
 
+        Map<String, FieldModel> fieldsMap = new HashMap<>();
+        fieldsMap = parseResponseStr(codingApiDto.getResponseStr(), fieldsMap);
+
+        templateContext.setResponseList(fieldsMap.values());
+
         generator.writeToFile(Const.APITemplateKey, templateContext);
 
+    }
+
+    /**
+     * 解析接口返回字符串
+     *
+     * @param responseStr
+     * @return
+     */
+    private Map<String, FieldModel> parseResponseStr(String responseStr, Map<String, FieldModel> fieldModels) {
+        if (responseStr == null || "".equals(responseStr)) {
+            return fieldModels;
+        }
+        Object parent = JSON.parse(responseStr);
+
+        if (parent instanceof JSONObject) {
+            JSONObject jsonObject = JSON.parseObject(responseStr);
+            for (String key : jsonObject.keySet()) {
+
+                Object value = jsonObject.get(key);
+                if (value != null && !(value instanceof JSONObject) && !(value instanceof JSONArray)) {
+
+                    // 检查免识别字段
+                    if (Cache.FIELD_EXCLUDE_INPUT_SET.contains(key)){
+                        continue;
+                    }
+                    FieldModel existField = fieldModels.get(key);
+                    if (existField == null) {
+                        FieldModel fieldModel = new FieldModel();
+                        fieldModel.setPropertyName(key);
+                        FieldModel cacheField = Cache.FIELD_MODEL_MAP_CACHE.get(key);
+                        if (cacheField != null) {
+                            fieldModel.setComment(cacheField.getComment());
+                            fieldModel.setJavaType(cacheField.getJavaType());
+                        }
+                        fieldModels.put(key, fieldModel);
+                    }
+                } else {
+                    parseResponseStr(JSON.toJSONString(value), fieldModels);
+                }
+
+            }
+        } else if (parent instanceof JSONArray) {
+            JSONArray jsonArray = JSONArray.parseArray(responseStr);
+            jsonArray.forEach(json -> {
+                parseResponseStr(JSON.toJSONString(json), fieldModels);
+            });
+        }
+        return fieldModels;
     }
 
 
@@ -91,7 +147,7 @@ public class CodeApiServiceImpl implements ICodeApiService {
 
         List<Map<String, String>> fieldList = new ArrayList<>();
 
-        if (dtoAbPath == null || "".equals(dtoAbPath)){
+        if (dtoAbPath == null || "".equals(dtoAbPath)) {
             return fieldList;
         }
         try {
@@ -118,7 +174,7 @@ public class CodeApiServiceImpl implements ICodeApiService {
                     list.removeIf(""::equals);
                     Object[] lineItems = list.toArray();
                     currentField.put("javaType", (String) lineItems[1]);
-                    currentField.put("propertyName", ((String) lineItems[2]).replace(";",""));
+                    currentField.put("propertyName", ((String) lineItems[2]).replace(";", ""));
                 }
             }
 
