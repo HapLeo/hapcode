@@ -70,4 +70,10 @@ $(function () {
 
     CodeGenerator.genJavaFile();
     CodeGenerator.genApiFile();
+
+    $('#desc').change(function () {
+
+        var destPath = "D:\\\\" + $('#desc').val() + "API.md";
+        $('#destPath').val(destPath);
+    });
 })
