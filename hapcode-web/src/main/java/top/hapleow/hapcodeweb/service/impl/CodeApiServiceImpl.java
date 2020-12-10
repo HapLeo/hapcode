@@ -163,7 +163,7 @@ public class CodeApiServiceImpl implements ICodeApiService {
                 }
                 int index;
                 if ((index = line.indexOf("@desc")) != -1) {
-                    currentField = new HashMap<>();
+                    currentField = new LinkedHashMap<>();
                     fieldList.add(currentField);
                     currentField.put("comment", line.substring(index + 5).trim());
                 } else if ((index = line.indexOf("private")) != -1) {
