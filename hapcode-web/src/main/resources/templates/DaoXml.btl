@@ -15,6 +15,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
+    select
     <% for(item in context.table.fields!){ %>
         <% if(item.key == "PRI"){ %>
         @{item.columnName} AS @{item.propertyName}
@@ -26,7 +27,6 @@
     </sql>
 
     <select id="selectListByPage" resultType="@{context.voClassName}">
-        select
         <include refid="Base_Column_List"/>
         from @{context.table.name!}
     </select>
