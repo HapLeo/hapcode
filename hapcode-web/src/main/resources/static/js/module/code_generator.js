@@ -2,7 +2,7 @@ var CodeGenerator = {}
 
 CodeGenerator.genJavaFile = function () {
 
-    $('#submit').click(function () {
+    $('#submitAllBtn').click(function () {
         var tableName = $('#tableName').val();
         var bizModuleName = $('#bizModuleName').val();
         var author = $('#author').val();
