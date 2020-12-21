@@ -60,11 +60,12 @@ public class CodeApiServiceImpl implements ICodeApiService {
         for (String tableName : codingApiDto.getTableNames()) {
 
             TableModel tableModel = tableInfoService.getTableModel(tableName);
-            if (tableModel != null) {
-                for (FieldModel field : tableModel.getFields()) {
-                    Cache.FIELD_MODEL_MAP_CACHE.put(field.getPropertyName(), field);
-                }
-            }
+            // 不要缓存，缓存会导致表结构修改时无法及时获取正确的字段
+//            if (tableModel != null) {
+//                for (FieldModel field : tableModel.getFields()) {
+//                    Cache.FIELD_MODEL_MAP_CACHE.put(field.getPropertyName(), field);
+//                }
+//            }
         }
 
         // 将DTO注入到上下文
