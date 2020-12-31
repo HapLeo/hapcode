@@ -45,8 +45,8 @@ var @{context.bizEnBigName} = {
 function operationFormatter(value, row, index) {
 
     var returnArr = [];
-    returnArr[returnArr.length] = "<a name='edit' class='edit' href='#'>修改</a>";
-    returnArr[returnArr.length] = "<a name='delete' class='delete' href='#'>删除</a>";
+    returnArr[returnArr.length] = "<a name='edit' class='edit' href='javascript:void(0)'>修改</a>";
+    returnArr[returnArr.length] = "<a name='delete' class='delete' href='javascript:void(0)'>删除</a>";
     return returnArr.join("<br />");
 }
 /**
