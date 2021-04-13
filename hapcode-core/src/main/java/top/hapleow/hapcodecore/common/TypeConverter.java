@@ -42,7 +42,9 @@ public class TypeConverter {
     }
 
     public static String db2Java(String dbType) {
-
+        if (dbType != null && dbType.length() > 0 && dbType.contains("(")) {
+            dbType = dbType.substring(0, dbType.indexOf("("));
+        }
         return typeMap.get(dbType);
     }
 }

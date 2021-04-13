@@ -13,20 +13,12 @@ import top.hapleow.hapcodecore.common.TypeConverter;
 @Data
 public class TableField implements IDbModel {
 
-    /**
-     * 表名
-     */
-    private String TABLE_NAME;
 
     /**
      * 列名
      */
-    private String COLUMN_NAME;
+    private String field;
 
-    /**
-     * 是否是唯一
-     */
-    private boolean isIdentity;
 
     /**
      * 键类型
@@ -36,12 +28,12 @@ public class TableField implements IDbModel {
     /**
      * 数据类型
      */
-    private String DATA_TYPE;
+    private String type;
 
     /**
      * 字段说明
      */
-    private String COMMENTS;
+    private String comment;
 
 
     /**
@@ -53,12 +45,11 @@ public class TableField implements IDbModel {
     public FieldModel convert2JavaModel() {
 
         FieldModel fieldModel = new FieldModel();
-        fieldModel.setColumnName(this.COLUMN_NAME);
-        fieldModel.setPropertyName(StringUtil.underline2CamelCase(this.COLUMN_NAME));
-        fieldModel.setIdentity(isIdentity);
+        fieldModel.setColumnName(this.field);
+        fieldModel.setPropertyName(StringUtil.underline2CamelCase(this.field));
         fieldModel.setKey(this.KEY);
-        fieldModel.setJavaType(TypeConverter.db2Java(this.DATA_TYPE));
-        fieldModel.setComment(this.COMMENTS);
+        fieldModel.setJavaType(TypeConverter.db2Java(this.type));
+        fieldModel.setComment(this.comment);
 
         return fieldModel;
     }

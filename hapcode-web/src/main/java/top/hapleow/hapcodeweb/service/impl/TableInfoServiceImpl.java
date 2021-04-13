@@ -7,6 +7,8 @@ import top.hapleow.hapcodecore.common.Cache;
 import top.hapleow.hapcodecore.factory.DbQueryFactory;
 import top.hapleow.hapcodecore.factory.ModelFactory;
 import top.hapleow.hapcodecore.model.FieldModel;
+import top.hapleow.hapcodecore.model.TableField;
+import top.hapleow.hapcodecore.model.TableInfo;
 import top.hapleow.hapcodecore.model.TableModel;
 import top.hapleow.hapcodeweb.dao.TableInfoMapper;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
@@ -35,15 +37,17 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
 
         String sql = dbQueryFactory.getDbQuery(url).tableFieldsSql(tableName);
-
-        return ModelFactory.tableFieldToModel(tableInfoMapper.getTableFields(sql));
+        List<TableField> tableFields = tableInfoMapper.getTableFields(sql);
+        return ModelFactory.tableFieldToModel(tableFields);
     }
 
     @Override
     public List<TableModel> getTables() {
 
         String sql = dbQueryFactory.getDbQuery(url).tablesSql();
-        return ModelFactory.tableInfoToModel(tableInfoMapper.getTables(sql));
+        List<TableInfo> tables = tableInfoMapper.getTables(sql);
+
+        return ModelFactory.tableInfoToModel(tables);
     }
 
     @Override
@@ -69,7 +73,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
                     if (cacheModel.getFields() == null) {
                         cacheModel.setFields(getTableFields(tableName));
                     }
-                }
+                    }
             }
         }
 

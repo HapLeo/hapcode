@@ -9,17 +9,18 @@ import lombok.Data;
  * @date 2020/8/28
  */
 @Data
-public class TableInfo implements IDbModel{
+public class TableInfo implements IDbModel {
 
     /**
-     * 表名
+     * 表名(mysql)
      */
-    private String TABLE_NAME;
+    private String NAME;
+
 
     /**
-     * 表说明
+     * 表说明(mysql)
      */
-    private String COMMENTS;
+    private String COMMENT;
 
 
     /**
@@ -31,9 +32,8 @@ public class TableInfo implements IDbModel{
     public TableModel convert2JavaModel() {
 
         TableModel tableModel = new TableModel();
-        tableModel.setName(this.TABLE_NAME);
-        tableModel.setComments(this.COMMENTS);
-
+        tableModel.setName(this.NAME);
+        tableModel.setComments(this.COMMENT);
         return tableModel;
     }
 }

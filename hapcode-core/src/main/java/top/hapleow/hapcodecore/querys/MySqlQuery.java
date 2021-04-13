@@ -13,6 +13,6 @@ public class MySqlQuery extends AbstractDbQuery {
 
     @Override
     public String tableFieldsSql(String tableName) {
-        return "show full fields from ? ";
+        return "show full fields from  " + tableName;
     }
 }
