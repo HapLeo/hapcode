@@ -11,6 +11,8 @@
 - `@{context.dto.url!}`
 
 
+**请求方式：**
+- @{context.dto.reqMethod!}
 
 
 **入参列表：**
@@ -24,6 +26,12 @@
 
 
 
+**入参示例：**
+```json
+
+@{context.dto.requestStr!}
+
+```
 
 
 

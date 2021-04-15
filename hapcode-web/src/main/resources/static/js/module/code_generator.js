@@ -42,6 +42,8 @@ CodeGenerator.genApiFile = function () {
         var desc = $('#desc').val();
         var url = $('#url').val();
         var dtoAbPath = $('#dtoAbPath').val();
+        var requestStr = $('#requestStr').val();
+        var reqMethod = $('#reqMethod').val();
         var responseStr = $('#responseStr').val();
 
         $.ajax({
@@ -52,7 +54,9 @@ CodeGenerator.genApiFile = function () {
                 'destPath': destPath,
                 'desc': desc,
                 'url': url,
+                'reqMethod': reqMethod,
                 'dtoAbPath': dtoAbPath,
+                'requestStr': requestStr,
                 'responseStr': responseStr
             },
             success: function () {

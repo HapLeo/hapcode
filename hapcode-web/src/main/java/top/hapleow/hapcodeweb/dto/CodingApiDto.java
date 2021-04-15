@@ -33,9 +33,19 @@ public class CodingApiDto {
     private String url;
 
     /**
+     * 请求方法
+     */
+    private String reqMethod;
+
+    /**
      * DTO绝对路径
      */
     private String dtoAbPath;
+
+    /**
+     * 接口请求字符串
+     */
+    private String requestStr;
 
     /**
      * 接口返回相应字符串

@@ -106,32 +106,49 @@
                                 <label class="col-sm-3 control-label">表名称列表（逗号隔开）：</label>
                                 <div class="col-sm-9">
                                     <input type="text" id="tableNames" class="form-control"
-                                           value="lzc_vat_invoice,lzc_vat_invoice_commodity">
+                                           value="schedule,schedule_user,schedule_customer,sys_shop,sys_user">
                                 </div>
                             </div>
                             <div class="form-group draggable">
                                 <label class="col-sm-3 control-label">接口描述：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="desc" class="form-control" value="发票列表接口">
+                                    <input type="text" id="desc" class="form-control" value="获取可预约门店接口">
                                 </div>
                             </div>
                             <div class="form-group draggable">
                                 <label class="col-sm-3 control-label">目标路径：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="destPath" class="form-control" value="D:\\API.md">
+                                    <input type="text" id="destPath" class="form-control" value="D:\\获取可预约门店接口API.md">
                                 </div>
                             </div>
 
                             <div class="form-group draggable">
                                 <label class="col-sm-3 control-label">请求URL：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="url" class="form-control" value="/vatInvoice/list">
+                                    <input type="text" id="url" class="form-control"
+                                           value="https://test1.aiwobeauty.com/admin/scheduleUser/getBookableShopList">
                                 </div>
                             </div>
+
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">请求方式：</label>
+                                <div class="col-sm-9">
+                                    <input type="text" id="reqMethod" class="form-control"
+                                           value="GET">
+                                </div>
+                            </div>
+
                             <div class="form-group draggable">
                                 <label class="col-sm-3 control-label">DTO绝对路径：</label>
                                 <div class="col-sm-9">
-                                    <input type="text" id="dtoAbPath" class="form-control" value="C:\ideaSpace\lzms\lzms-admin\src\main\java\com\longzhong\lzms\modular\finance\wrapper\VatInvoiceDto.java">
+                                    <input type="text" id="dtoAbPath" class="form-control"
+                                           value="D:\workspace\aiwoplatformat\sys-base\user-manage-client\src\main\java\com\jbs\usermanage\dto\BookableShopListDto.java">
+                                </div>
+                            </div>
+                            <div class="form-group draggable">
+                                <label class="col-sm-3 control-label">接口入参示例字符串：</label>
+                                <div class="col-sm-9">
+                                    <textarea rows="10" id="requestStr" class="form-control"></textarea>
                                 </div>
                             </div>
                             <div class="form-group draggable">
