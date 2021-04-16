@@ -16,12 +16,17 @@ public class PackageConfig {
     /**
      * 模块根路径
      */
-    private String modulePath = "C:\\ideaSpace\\lzcs\\lzcs-admin\\";
+    private String modulePath = "D:\\workspace\\aiwoplatformat\\sys-base\\user-manage-server\\";
 
     /**
      * java包路径
      */
     private String javaPath = "src/main/java/";
+
+    /**
+     * resources 目录
+     */
+    private String resourcesPath = "src/main/resources/";
 
     /**
      * html包路径
@@ -41,23 +46,25 @@ public class PackageConfig {
     /**
      * 包路径
      */
-    private String packagePath = "com/longzhong/lzcs/modular/";
+    //private String packagePath = "com/longzhong/lzcs/modular/";
+    private String packagePath = "com/jbs/";
+
 
 
     /**
      * 包名(类全限定名的前半部分)
      */
-    private String packageName = "com.longzhong.lzcs.modular.";
+    private String packageName = "com.jbs.";
 
     /**
      * 模块名（业务模块，例如order）
      */
-    private String bizModuleName = "finance";
+    private String bizModuleName = "usermanage";
 
     /**
      * 模块路径（业务模块，例如order）
      */
-    private String bizModulePath = "finance/";
+    private String bizModulePath = "usermanage/";
 
 
     public void setBizModuleName(String bizModuleName){
