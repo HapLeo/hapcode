@@ -12,5 +12,5 @@ mybatis-plus:
   type-aliases-package: top.hapleow.hapcodeweb.model.*
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-    map-underscore-to-camel-case: false
+    map-underscore-to-camel-case: true
 
