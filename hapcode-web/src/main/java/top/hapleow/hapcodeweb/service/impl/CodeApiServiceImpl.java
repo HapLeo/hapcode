@@ -17,6 +17,7 @@ import top.hapleow.hapcodeweb.service.ITableInfoService;
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 生成API的服务
@@ -89,7 +90,17 @@ public class CodeApiServiceImpl implements ICodeApiService {
         Map<String, FieldModel> fieldsMap = new HashMap<>();
         fieldsMap = parseResponseStr(codingApiDto.getResponseStr(), fieldsMap);
 
-        templateContext.setResponseList(fieldsMap.values());
+        List<FieldModel> fieldModels = new ArrayList<>();
+        for (FieldModel fieldModel : fieldsMap.values()) {
+            if (fieldModel.getJavaType() == null) {
+                fieldModel.setJavaType("String");
+            }
+            fieldModels.add(fieldModel);
+        }
+
+        fieldModels.sort(Comparator.comparing(FieldModel::getPropertyName));
+
+        templateContext.setResponseList(fieldModels);
 
         generator.writeToFile(Const.APITemplateKey, templateContext);
 
@@ -115,7 +126,7 @@ public class CodeApiServiceImpl implements ICodeApiService {
                 if (value != null && !(value instanceof JSONObject) && !(value instanceof JSONArray)) {
 
                     // 检查免识别字段
-                    if (Cache.FIELD_EXCLUDE_INPUT_SET.contains(key)){
+                    if (Cache.FIELD_EXCLUDE_INPUT_SET.contains(key)) {
                         continue;
                     }
                     FieldModel existField = fieldModels.get(key);

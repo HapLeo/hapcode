@@ -13,6 +13,7 @@ import top.hapleow.hapcodecore.model.TableModel;
 import top.hapleow.hapcodeweb.dao.TableInfoMapper;
 import top.hapleow.hapcodeweb.service.ITableInfoService;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -38,6 +39,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
 
         String sql = dbQueryFactory.getDbQuery(url).tableFieldsSql(tableName);
         List<TableField> tableFields = tableInfoMapper.getTableFields(sql);
+        tableFields.sort(Comparator.comparing(TableField::getField));
         return ModelFactory.tableFieldToModel(tableFields);
     }
 
@@ -73,7 +75,7 @@ public class TableInfoServiceImpl implements ITableInfoService {
                     if (cacheModel.getFields() == null) {
                         cacheModel.setFields(getTableFields(tableName));
                     }
-                    }
+                }
             }
         }
 
