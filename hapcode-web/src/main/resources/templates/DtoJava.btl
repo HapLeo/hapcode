@@ -8,8 +8,8 @@ package @{context.packageName};
  * @author @{context.author}
  * @Date @{date,dateFormat="yyyy-MM-dd HH:mm:ss"}
  */
-@Data
-public class @{context.bizEnBigName}Dto implements Serializable {
+
+public class @{context.bizEnBigName}Dto {
 
 
 

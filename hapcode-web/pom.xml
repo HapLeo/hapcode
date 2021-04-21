@@ -6,7 +6,7 @@
         <groupId>top.hapleow</groupId>
         <artifactId>hapcode</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/><!-- lookup parent from repository -->
     </parent>
     <artifactId>hapcode-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
